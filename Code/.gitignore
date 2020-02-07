@@ -15,7 +15,7 @@ CTestTestfile.cmake
 _deps
 
 # VSCode
-Code/.vscode/c_cpp_properties.json
+Code/.vscode/*
 
 # Prerequisites
 *.d
