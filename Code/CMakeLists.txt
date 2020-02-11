@@ -6,7 +6,40 @@ enable_testing()
 
 find_package( OpenCV REQUIRED ) 
 
-add_executable(ShapeDetection main.cpp)
+SET(SOURCES
+    main.cpp
+    IShape.cpp
+    CViewWindow.cpp
+    CTrackBar.cpp
+    CParser.cpp
+    CMode.cpp
+    CInteractiveMode.cpp
+    CCommandMode.cpp
+    CColour.cpp
+    Shapes/CCircle.cpp
+    Shapes/CHalfCircle.cpp
+    Shapes/CSquare.cpp
+    Shapes/CTriangle.cpp
+)
+SET(HEADERS
+    IShape.h
+    ESelections.h
+    CViewWindow.h
+    CTrackBar.h
+    CParser.h
+    CMode.h
+    CInteractiveMode.h
+    CCommandMode.h
+    CColour.h
+    Shapes/CCircle.h
+    Shapes/CHalfCircle.h
+    Shapes/CSquare.h
+    Shapes/CTriangle.h
+)
+
+add_executable(ShapeDetection ${SOURCES} ${HEADERS}
+
+)
 
 target_link_libraries( ShapeDetection ${OpenCV_LIBS} )
 

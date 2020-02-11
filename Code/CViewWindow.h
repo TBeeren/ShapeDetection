@@ -1,9 +1,9 @@
 /**
- * @file CViewWindow.h
- * @author Evren Kilic (ET.Kilic@student.han.nl), Tim Beeren (T.Beeren1@student.han.nl)
+ * @file CColour.h
+ * @author Tim Beeren (T.Beeren@student.han.nl) Stijn Krabbenborg (S.Krabbenborg@student.han.nl) Evren Kilic (ET.Kilic@student.han.nl)
  * @brief 
  * @version 0.1
- * @date 06-02-2020
+ * @date 07-02-2020
  * 
  * @copyright Copyright (c) 2020
  * 
@@ -15,19 +15,19 @@
 #include <memory>
 
 #include "ESelections.h" 
+#include "CTrackBar.h"
 
 //Forward declarations
-class CTrackBar;
 
 class CViewWindow
 {
 public:
-    CViewWindow(std::shared_ptr<eShapes> spShape, std::shared_ptr<eColours> spColour );
+    CViewWindow(std::shared_ptr<eShapes> spShape, std::shared_ptr<eColours> spColour);
     ~CViewWindow();
 
 private:
-    std::unique_ptr<CTrackBar> m_spColourTrackBar;
-    std::unique_ptr<CTrackBar> m_spShapeTrackBar;
+    std::unique_ptr<CTrackBar<eShapes>> m_spColourTrackBar;
+    std::unique_ptr<CTrackBar<eColours>> m_spShapeTrackBar;
 };
 
 #endif /*CVIEWWINDOW_H*/

@@ -1,6 +1,7 @@
 #include "CHalfCircle.h"
 
 CHalfCircle::CHalfCircle(/* args */)
+: CCircle()
 {
 }
 
