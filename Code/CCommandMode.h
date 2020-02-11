@@ -14,18 +14,27 @@
 
 #include "CMode.h"
 
-//Forward Declarations
+//Forward Declarationsa
 class CParser;
 
 class CCommandMode : public CMode
 {
 public:
-    CCommandMode();
+    CCommandMode(char* argv[]);
     virtual ~CCommandMode();
 
-private:
-    std::shared_ptr<CParser> m_spParser;
+    void Init();
+    void HaltThread();
+    void StartTest();
+    void StopTest();
+    void Execute();
+    bool IsTestRunning() const;
 
+private:
+    char** m_bashArguments;
+    bool m_running;
+    std::thread m_thread;
+    std::shared_ptr<CParser> m_spParser;
 };
 
 #endif /*CCOMMANDMODE_H*/

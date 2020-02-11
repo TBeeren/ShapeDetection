@@ -15,8 +15,11 @@
 class CParser
 {
 public:
-    CParser(/* args */);
+    CParser();
     ~CParser();
+
+    void ParseCommandLineArguments(char *argv[]);
+
 private:
     /* data */
 };

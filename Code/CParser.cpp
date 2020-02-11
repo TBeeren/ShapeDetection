@@ -1,9 +1,14 @@
 #include "CParser.h"
 
-CParser::CParser(/* args */)
+CParser::CParser()
 {
 }
 
 CParser::~CParser()
 {
+}
+
+void CParser::ParseCommandLineArguments(char *argv[])
+{
+    
 }
