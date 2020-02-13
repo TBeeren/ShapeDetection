@@ -26,6 +26,9 @@ public:
     CMode();
     ~CMode();
 
+    virtual bool Init() = 0;
+    virtual void Execute() = 0;
+
 private:
     std::shared_ptr<CFeatureExtraction> m_spFeatureExtraction;
     std::shared_ptr<CFeatureDetection> m_spFeatureDetection;

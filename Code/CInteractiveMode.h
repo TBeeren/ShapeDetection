@@ -13,6 +13,7 @@
 #define CINTERACTIVEMODE_H
 
 #include "CMode.h"
+#include "ESelections.h"
 
 //Forward Declarations
 class CViewWindow;
@@ -23,8 +24,14 @@ public:
     CInteractiveMode();
     virtual ~CInteractiveMode();
 
+    bool Init();
+    void Execute();
+
 private:
     std::shared_ptr<CViewWindow> m_spViewWindow;
+
+    enum eShapes object = END_OF_SHAPES;
+    enum eColours color = END_OF_COLOURS;
 };
 
 #endif /*CINTERACTIVEMODE_H*/

@@ -9,8 +9,29 @@
  * 
  */
 
+#include <iostream>
+#include <opencv2/opencv.hpp>
+
+#include "CInteractiveMode.h"
+
 int main(int argc, char const *argv[])
 {
+    if(argc == 1)
+    {
+        std::cout << "Interactive mode" << std::endl;
+
+        CInteractiveMode mode;
+            while(true){
+                if(mode.Init())
+                {
+                    mode.Execute();
+                }else{
+                    std::cout << "No valid shape or color!!" << std::endl; 
+                }
+            }
+    }else{
+        std::cout << "batch mode" << std::endl;
+    }
 
     return 0;
 }
