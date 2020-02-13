@@ -9,7 +9,6 @@
  * 
  */
 
-#include <cassert>
 #include "CCommandMode.h"
 
 //Define an message with the triggered assert.
@@ -17,16 +16,17 @@
 
 int main(int argc, char** argv)
 {
-    assertm(argc <= 3, "Please enter a maximum of 3 arguments");
+    assertm(argc <= 2, "Please enter a maximum of 2 arguments");
 
-    if(argc == 3)
+    if(argc == 2)
     {
         // Enter CommandMode
         std::unique_ptr<CCommandMode> spCommandMode = std::make_unique<CCommandMode>(argv);
-        spCommandMode->Init();
-        spCommandMode->StartTest();
-        spCommandMode->Execute();
-
+        if(spCommandMode->Init())
+        {
+            spCommandMode->StartTest();
+            spCommandMode->Execute();
+        }
     }
     else if(argc == 1)
     {

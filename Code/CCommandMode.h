@@ -14,6 +14,9 @@
 
 #include "CMode.h"
 
+#include <fstream>
+#include <cassert>
+
 //Forward Declarationsa
 class CParser;
 
@@ -31,6 +34,7 @@ public:
     bool IsTestRunning() const;
 
 private:
+    std::ifstream m_InputFile;
     char** m_bashArguments;
     bool m_running;
     std::shared_ptr<CParser> m_spParser;

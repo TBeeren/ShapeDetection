@@ -10,9 +10,12 @@
  */
 
 #include "CCommandMode.h"
-#include "CMode.h"
 
+#include "CMode.h"
 #include "CParser.h"
+
+//Define an message with the triggered assert.
+#define assertm(exp, msg) assert(((void)msg, exp))
 
 CCommandMode::CCommandMode(char** argv)
 : CMode()
@@ -24,12 +27,18 @@ CCommandMode::CCommandMode(char** argv)
 
 CCommandMode::~CCommandMode()
 {
-
 }
 
 bool CCommandMode::Init()
 {
-  return true;
+  m_InputFile.open(m_bashArguments[1]); 
+
+  if(m_InputFile.fail())
+  {
+    std::cout << "Unable to open given file, please check your path." << std::endl;
+  } 
+
+  return m_InputFile.is_open();
 }
 
 void CCommandMode::StartTest()
@@ -46,7 +55,7 @@ void CCommandMode::Execute()
 {
   if(m_running)
   {
-    m_spParser->ParseCommandLineArguments(m_bashArguments);
+    m_spParser->ParseFile(m_InputFile);
   }
   else
   {

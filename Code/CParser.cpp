@@ -2,6 +2,7 @@
 
 #include "ESelections.h"
 #include <iostream>
+#include <fstream>
 
 CParser::CParser(eShapes& rSelectedShape, eColours& rSelectedColour)
 : m_rSelectedShape(rSelectedShape)
@@ -15,9 +16,43 @@ CParser::~CParser()
 
 // [Shape][Whitespace][Colour]
 // #Comments comments comments (<- Filter this out)
-void CParser::ParseFile(std::string filename ,char** argv)
+void CParser::ParseFile(std::ifstream& rFilename)
 {
-    ParseStringToEnum(argv);
+    do
+    {
+        std::string line;
+        std::getline(rFilename, line); 
+
+        if(line[0] != '#' && !line.empty())
+        {
+            int whitespacePos = 0;
+            std::string colour = "";
+            std::string shape = "";
+
+            for(int i = 0; i < line.size(); ++i)
+            {
+                if(line[i] == ' ')
+                {
+                    whitespacePos = i;
+                    break;
+                }
+            }
+
+            for(int i = 0; i < whitespacePos; ++i)
+            {
+                shape = shape + line[i];
+            }
+
+            for(int i = whitespacePos + 1; i < line.size(); ++i)
+            {
+                colour = colour + line[i];
+            }
+
+            IsConfiguredAsShape(shape);
+            IsConfiguredAsColour(colour);
+        }
+
+    } while(!rFilename.eof());
 }
 
 bool CParser::ParseStringToEnum(char** argv)

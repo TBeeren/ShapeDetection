@@ -20,7 +20,7 @@ public:
     CParser(eShapes& rSelectedShape, eColours& rSelectedColour);
     ~CParser();
 
-    void ParseFile(std::string filename ,char** argv);
+    void ParseFile(std::ifstream& rFilename);
     bool ParseStringToEnum(char** argv);
 
     bool IsConfiguredAsColour(std::string cmdArgument);
