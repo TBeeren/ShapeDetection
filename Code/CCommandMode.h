@@ -23,17 +23,16 @@ public:
     CCommandMode(char* argv[]);
     virtual ~CCommandMode();
 
-    void Init();
-    void HaltThread();
+    bool Init() override;
+    void Execute() override;
+    
     void StartTest();
     void StopTest();
-    void Execute();
     bool IsTestRunning() const;
 
 private:
     char** m_bashArguments;
     bool m_running;
-    std::thread m_thread;
     std::shared_ptr<CParser> m_spParser;
 };
 

@@ -12,16 +12,27 @@
 #ifndef CTRACKBAR_H
 #define CTRACKBAR_H
 
+#include "ESelections.h"
+
 class CParser
 {
 public:
-    CParser();
+    CParser(eShapes& rSelectedShape, eColours& rSelectedColour);
     ~CParser();
 
-    void ParseCommandLineArguments(char *argv[]);
+    void ParseFile(std::string filename ,char** argv);
+    bool ParseStringToEnum(char** argv);
+
+    bool IsConfiguredAsColour(std::string cmdArgument);
+    bool IsConfiguredAsShape(std::string cmdArgument);
 
 private:
-    /* data */
+    eShapes& m_rSelectedShape;
+    eColours& m_rSelectedColour;
+
+    std::string m_firstArgument;
+    std::string m_secondArgument;
+
 };
 
 #endif /*CTRACKBAR_H*/

@@ -10,7 +10,6 @@
  */
 
 #include <cassert>
-#include <iostream>
 #include "CCommandMode.h"
 
 //Define an message with the triggered assert.
@@ -18,25 +17,28 @@
 
 int main(int argc, char** argv)
 {
-    assertm(argc <= 4, "Please enter a maximum of 3 arguments");
+    assertm(argc <= 3, "Please enter a maximum of 3 arguments");
 
-    if(argc == 4)
+    if(argc == 3)
     {
         // Enter CommandMode
-    }
-    else if(argc == 1)
-    {
-        // Enter GUI mode
         std::unique_ptr<CCommandMode> spCommandMode = std::make_unique<CCommandMode>(argv);
         spCommandMode->Init();
         spCommandMode->StartTest();
         spCommandMode->Execute();
-        
+
+    }
+    else if(argc == 1)
+    {
+        // Enter GUI mode
     }
     else
     {
-        std::cout << "Please enter a maximum of 3 arguments" << std::endl;
+        std::cout << "Please enter a maximum of 2 arguments" << std::endl;
     }
+
+    // Feature -> Calibration mode 
+    // @brief: Enter Calibrarion window
 
     return 0;
 }

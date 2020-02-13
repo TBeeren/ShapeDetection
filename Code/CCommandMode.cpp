@@ -10,30 +10,26 @@
  */
 
 #include "CCommandMode.h"
+#include "CMode.h"
 
 #include "CParser.h"
-#include <thread> 
 
 CCommandMode::CCommandMode(char** argv)
-: m_bashArguments(argv)
+: CMode()
+, m_bashArguments(argv)
 , m_running(false)
-, m_spParser(std::make_unique<CParser>())
+, m_spParser(std::make_unique<CParser>(m_SelectedShape, m_SelectedColour))
 {
 }
 
 CCommandMode::~CCommandMode()
 {
-   HaltThread(); 
+
 }
 
-void CCommandMode::Init()
+bool CCommandMode::Init()
 {
-  m_thread = std::thread(StartTest);
-}
-
-void CCommandMode::HaltThread()
-{
-  m_thread.join();
+  return true;
 }
 
 void CCommandMode::StartTest()
@@ -48,15 +44,14 @@ void CCommandMode::StopTest()
 
 void CCommandMode::Execute()
 {
-    if(m_running)
-    {
-        m_spParser->ParseCommandLineArguments(m_bashArguments);
-    }
-    else
-    {
-
-    }
-    
+  if(m_running)
+  {
+    m_spParser->ParseCommandLineArguments(m_bashArguments);
+  }
+  else
+  {
+    std::cout << "[Warning] -> Test is not running. Please start the test first" << std::endl;
+  }
 }
 
 bool CCommandMode::IsTestRunning() const
