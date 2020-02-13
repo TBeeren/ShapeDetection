@@ -13,14 +13,22 @@
 #define CCOLOUR_H
 
 #include "ESelections.h"
+#include "opencv2/opencv.hpp"
 
 class CColour
 {
 public:
-    CColour(/* args */);
+    CColour(eColours aColour);
+    CColour(eColours aColour, cv::Scalar lowerRange, cv::Scalar upperRange);
     ~CColour();
+
+    eColours GetColour();
+    cv::Scalar GetLowerLimit();
+    cv::Scalar GetUpperLimit();
 private:
     eColours m_colour;
+    cv::Scalar m_lowerLimit;
+    cv::Scalar m_upperLimit;
 };
 
 #endif /*CCOLOUR_H*/
