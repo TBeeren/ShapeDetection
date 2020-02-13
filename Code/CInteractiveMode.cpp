@@ -18,22 +18,22 @@ CInteractiveMode::~CInteractiveMode()
 bool CInteractiveMode::Init()
 {
     //Set theze values to the default
-    object = END_OF_SHAPES;
+    shape = END_OF_SHAPES;
     color = END_OF_COLOURS;
 
     //Store the incomming values temporary
-    std::string anObject;
+    std::string aShape;
     std::string aColor;
 
     std::cout << "Choose the object:" << std::endl;
-    std::cin >> anObject ;
+    std::cin >> aShape ;
 
     for(auto v  : configuredShapes)
     {
-        if(v.second == anObject)
+        if(v.second == aShape)
         {
-            object = v.first;
-            std::cout << "Object = " << anObject << std::endl;
+            shape = v.first;
+            std::cout << "Object = " << aShape << std::endl;
         }
     }
 
@@ -49,7 +49,7 @@ bool CInteractiveMode::Init()
         }
     }  
 
-    return (object != END_OF_SHAPES && color != END_OF_COLOURS)? true :  false;
+    return (shape != END_OF_SHAPES && color != END_OF_COLOURS)? true :  false;
 }
 
 void CInteractiveMode::Execute()

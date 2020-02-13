@@ -1,7 +1,7 @@
 /**
  * @file CColour.h
  * @author Tim Beeren (T.Beeren@student.han.nl) Stijn Krabbenborg (S.Krabbenborg@student.han.nl) Evren Kilic (ET.Kilic@student.han.nl)
- * @brief 
+ * @brief This class creates windows.
  * @version 0.1
  * @date 07-02-2020
  * 
@@ -26,8 +26,26 @@ class CViewWindow
 {
 public:
     //CViewWindow(std::shared_ptr<eShapes> spShape, std::shared_ptr<eColours> spColour);
+
+    /**
+     * @brief Construct a new CViewWindow object
+     * 
+     * @param windowName, name of the window
+     * @param src, src of the image
+     */
     CViewWindow(std::string windowName, cv::Mat src);
+
+    /**
+     * @brief Construct a new CViewWindow object. This constructor opens a window with webcam.
+     * 
+     * @param windowName, name of the window
+     */
     CViewWindow(std::string windowName);
+
+    /**
+     * @brief Destroy the CViewWindow object
+     * 
+     */
     ~CViewWindow();
 
 private:
