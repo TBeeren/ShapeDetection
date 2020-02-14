@@ -34,7 +34,7 @@ public:
     bool InitColours(bool userCalibration = false);
     std::shared_ptr<CColour> GetColour(eColours colourValue);
 private:
-    std::vector<std::shared_ptr<CColour>> m_colourList;
+    std::vector<std::shared_ptr<CColour>> m_ColourList;
 };
 
 #endif /*CCALIBRATION_H*/
