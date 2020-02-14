@@ -16,36 +16,5 @@
 #include <iostream>
 int main(int argc, char const *argv[])
 {
-    std::cout << "Program started" << std::endl;
-    cv::namedWindow("mainputwindow", cv::WINDOW_NORMAL);
-    cv::Mat source, output, bi;
-    CFeatureExtraction extr;
-    extr.init(false);
-    cv::VideoCapture cap;
-    if (!cap.open(0))
-    {
-        return 0;
-    }
-    cap >> source;
-    if (source.empty())
-    {
-        return -1;
-    }
-    cap >> source;
-    for (;;)
-    {
-        //cap >> source;
-        source = cv::imread("/home/evren/Downloads/yellow_circle.jpg");
-        output = extr.extractColours(source, YELLOW);
-        output = extr.extractEdges(output);
-        extr.extractContours(output);
-
-        imshow("mainputwindow", output);
-        if (cv::waitKey(30) == 27) //wait till esc press
-        {
-            break;
-        }
-    }
-    std::cout << "Program ended" << std::endl;
     return 0;
 }

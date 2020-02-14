@@ -16,7 +16,7 @@ CCalibration::~CCalibration()
 {
 }
 
-bool CCalibration::initColours(bool userCalibration)
+bool CCalibration::InitColours(bool userCalibration)
 {
     if (userCalibration)
     {
