@@ -24,7 +24,7 @@ class CMode
 {
 public:
     CMode();
-    ~CMode();
+    virtual ~CMode();
 
     virtual bool Init() = 0;
     virtual void Execute() = 0;

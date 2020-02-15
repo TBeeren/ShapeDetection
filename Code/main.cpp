@@ -14,7 +14,7 @@
 
 #include "CInteractiveMode.h"
 
-int main(int argc, char const *argv[])
+int main(int argc, char** argv)
 {
     if(argc == 1)
     {
@@ -25,8 +25,6 @@ int main(int argc, char const *argv[])
                 if(mode.Init())
                 {
                     mode.Execute();
-                }else{
-                    std::cout << "No valid shape or color!!" << std::endl; 
                 }
             }
     }else{

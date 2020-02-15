@@ -1,7 +1,7 @@
 /**
  * @file CColour.h
  * @author Tim Beeren (T.Beeren@student.han.nl) Stijn Krabbenborg (S.Krabbenborg@student.han.nl) Evren Kilic (ET.Kilic@student.han.nl)
- * @brief This class creates windows.
+ * @brief This class creates opencv windows.
  * @version 0.1
  * @date 07-02-2020
  * 

@@ -17,43 +17,60 @@ CInteractiveMode::~CInteractiveMode()
 
 bool CInteractiveMode::Init()
 {
-    //Set theze values to the default
-    shape = END_OF_SHAPES;
-    color = END_OF_COLOURS;
-
-    //Store the incomming values temporary
-    std::string aShape;
-    std::string aColor;
+    std::string shape;
+    std::string colour;
 
     std::cout << "Choose the object:" << std::endl;
-    std::cin >> aShape ;
+    std::cin >> shape ;
 
-    for(auto v  : configuredShapes)
+    if(checkShapeInput(shape))
     {
-        if(v.second == aShape)
+        std::cout << "Choose the color:" << std::endl;
+        std::cin >> colour ;  
+
+        if(checkColourInput(colour))
         {
-            shape = v.first;
-            std::cout << "Object = " << aShape << std::endl;
+            return true;
         }
     }
 
-    std::cout << "Choose the color:" << std::endl;
-    std::cin >> aColor ;  
-
-    for(auto v  : configuredColours)
-    {
-        if(v.second == aColor)
-        {
-            color = v.first;
-            std::cout << "Color = " << aColor << std::endl;
-        }
-    }  
-
-    return (shape != END_OF_SHAPES && color != END_OF_COLOURS)? true :  false;
+    return false;
 }
 
 void CInteractiveMode::Execute()
 {
     //CViewWindow sourceWindow("src window", cv::imread( cv::samples::findFile("../../img/colored_blocks.jpg")));
     CViewWindow webcamWindow("webcam window");
+}
+
+bool CInteractiveMode::checkShapeInput(std::string aShape)
+{
+    for(const auto &v  : configuredShapes)
+    {
+        if(v.second == aShape)
+        {
+            m_shape = v.first;
+            std::cout << "Object = " << aShape << std::endl;
+            return true;
+        }
+    }
+
+    std::cout << "Invalid object given." << std::endl;
+    return false;
+}
+
+bool CInteractiveMode::checkColourInput(std::string aColour)
+{
+    for(const auto &v  : configuredColours)
+    {
+        if(v.second == aColour)
+        {
+            m_colour = v.first;
+            std::cout << "Colour = " << aColour << std::endl;
+            return true;
+        }
+    }
+
+    std::cout << "Invalid color given." << std::endl;
+    return false;
 }

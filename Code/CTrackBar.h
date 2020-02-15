@@ -21,13 +21,13 @@ template<typename T>
 class CTrackBar
 {
 public:
-    CTrackBar(std::string windowName, std::shared_ptr<T> value, uint8_t max_color): m_windowName(windowName), m_value(value), m_count(max_color) 
+    CTrackBar(std::string windowName, std::shared_ptr<T> value, uint8_t maxColour): m_windowName(windowName), m_spValue(value), m_count(maxColour) 
     {}
     ~CTrackBar() = default;
 
 private:
     std::string m_windowName;
-    std::shared_ptr<T> m_value;
+    std::shared_ptr<T> m_spValue;
     uint8_t m_count;
 };
 
