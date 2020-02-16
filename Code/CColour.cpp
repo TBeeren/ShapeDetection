@@ -6,36 +6,42 @@ namespace
     constexpr const uint8_t BLUE_UPPER_HUE_LIMIT = 30;
     constexpr const uint8_t GREEN_UPPER_HUE_LIMIT = 80;
     constexpr const uint8_t YELLOW_UPPER_HUE_LIMIT = 100;
+    constexpr const uint8_t BLACK_UPPER_HUE_LIMIT = 179;
     constexpr const uint8_t WHITE_UPPER_HUE_LIMIT = 118;
 
     constexpr const uint8_t RED_LOWER_HUE_LIMIT = 115;
     constexpr const uint8_t BLUE_LOWER_HUE_LIMIT = 0;
     constexpr const uint8_t GREEN_LOWER_HUE_LIMIT = 30;
     constexpr const uint8_t YELLOW_LOWER_HUE_LIMIT = 60;
+    constexpr const uint8_t BLACK_LOWER_HUE_LIMIT = 103;
     constexpr const uint8_t WHITE_LOWER_HUE_LIMIT = 103;
 
     constexpr const uint8_t RED_UPPER_SATURATION_LIMIT = 255;
     constexpr const uint8_t BLUE_UPPER_SATURATION_LIMIT = 255;
     constexpr const uint8_t GREEN_UPPER_SATURATION_LIMIT = 255;
     constexpr const uint8_t YELLOW_UPPER_SATURATION_LIMIT = 255;
+    constexpr const uint8_t BLACK_UPPER_SATURATION_LIMIT = 255;
     constexpr const uint8_t WHITE_UPPER_SATURATION_LIMIT = 255;
 
     constexpr const uint8_t RED_LOWER_SATURATION_LIMIT = 100;
     constexpr const uint8_t BLUE_LOWER_SATURATION_LIMIT = 70;
     constexpr const uint8_t GREEN_LOWER_SATURATION_LIMIT = 70;
     constexpr const uint8_t YELLOW_LOWER_SATURATION_LIMIT = 100;
+    constexpr const uint8_t BLACK_LOWER_SATURATION_LIMIT = 0;
     constexpr const uint8_t WHITE_LOWER_SATURATION_LIMIT = 100;
 
     constexpr const uint8_t RED_UPPER_VALUE_LIMIT = 255;
     constexpr const uint8_t BLUE_UPPER_VALUE_LIMIT = 255;
     constexpr const uint8_t GREEN_UPPER_VALUE_LIMIT = 255;
     constexpr const uint8_t YELLOW_UPPER_VALUE_LIMIT = 255;
+    constexpr const uint8_t BLACK_UPPER_VALUE_LIMIT = 70;
     constexpr const uint8_t WHITE_UPPER_VALUE_LIMIT = 255;
 
     constexpr const uint8_t RED_LOWER_VALUE_LIMIT = 70;
     constexpr const uint8_t BLUE_LOWER_VALUE_LIMIT = 50;
     constexpr const uint8_t GREEN_LOWER_VALUE_LIMIT = 50;
     constexpr const uint8_t YELLOW_LOWER_VALUE_LIMIT = 50;
+    constexpr const uint8_t BLACK_LOWER_VALUE_LIMIT = 255;
     constexpr const uint8_t WHITE_LOWER_VALUE_LIMIT = 109;
 } // namespace
 
@@ -66,6 +72,12 @@ CColour::CColour(eColours colour)
     {
         m_lowerLimit = cv::Scalar(YELLOW_LOWER_HUE_LIMIT, YELLOW_LOWER_SATURATION_LIMIT, YELLOW_LOWER_VALUE_LIMIT);
         m_upperLimit = cv::Scalar(YELLOW_UPPER_HUE_LIMIT, YELLOW_UPPER_SATURATION_LIMIT, YELLOW_UPPER_VALUE_LIMIT);
+        break;
+    }
+    case eColours::BLACK:
+    {
+        m_lowerLimit = cv::Scalar(BLACK_LOWER_HUE_LIMIT, BLACK_LOWER_SATURATION_LIMIT, BLACK_LOWER_VALUE_LIMIT);
+        m_upperLimit = cv::Scalar(BLACK_UPPER_HUE_LIMIT, BLACK_UPPER_SATURATION_LIMIT, BLACK_UPPER_VALUE_LIMIT);
         break;
     }
     case eColours::WHITE:

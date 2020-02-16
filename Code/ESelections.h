@@ -30,8 +30,8 @@ enum eColours
     BLUE,
     GREEN,
     YELLOW,
-    WHITE,
     BLACK,
+    WHITE,
     END_OF_COLOURS
 };
 
