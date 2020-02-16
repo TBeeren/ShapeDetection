@@ -1,3 +1,14 @@
+/**
+ * @file CParser.cpp
+ * @author Tim Beeren (T.Beeren1@student.han.nl)
+ * @brief The CParser class is responsible for reading and parsing commands from the given inputfile. 
+ * @version 0.1
+ * @date 16-02-2020
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #include "CParser.h"
 
 #include "ESelections.h"
@@ -14,8 +25,6 @@ CParser::~CParser()
 {
 }
 
-// [Shape][Whitespace][Colour]
-// #Comments comments comments (<- Filter this out)
 void CParser::ParseFile(std::ifstream& rFilename)
 {
     do
@@ -55,19 +64,9 @@ void CParser::ParseFile(std::ifstream& rFilename)
     } while(!rFilename.eof());
 }
 
-bool CParser::ParseStringToEnum(char** argv)
-{
-    if(!IsConfiguredAsShape(argv[1]) | !IsConfiguredAsColour(argv[2]))
-    {      
-        return false;
-    }
-
-    return true;
-}
-
 bool CParser::IsConfiguredAsColour(std::string cmdArgument)
 {
-    for(const auto& rColour : configuredColours)
+    for(const std::pair<const eColours, std::__cxx11::string>& rColour : configuredColours)
     {
         if(rColour.second == cmdArgument)
         {
@@ -82,7 +81,7 @@ bool CParser::IsConfiguredAsColour(std::string cmdArgument)
 
 bool CParser::IsConfiguredAsShape(std::string cmdArgument)
 {
-    for(const auto& rShape : configuredShapes)
+    for(const std::pair<const eShapes, std::__cxx11::string>& rShape : configuredShapes)
     {
         if(rShape.second == cmdArgument)
         {

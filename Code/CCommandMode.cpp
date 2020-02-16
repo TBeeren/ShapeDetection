@@ -1,7 +1,8 @@
 /**
  * @file CCommandMode.cpp
  * @author Tim Beeren (T.Beeren1@student.han.nl)
- * @brief 
+ * @brief The CCommandMode Inherits from CMode, and is responsible for parsing batch 
+ *        commands from an user. 
  * @version 0.1
  * @date 11-02-2020
  * 
@@ -41,12 +42,12 @@ bool CCommandMode::Init()
   return m_InputFile.is_open();
 }
 
-void CCommandMode::StartTest()
+void CCommandMode::StartProcess()
 {
   m_running = true;
 }
 
-void CCommandMode::StopTest()
+void CCommandMode::StopProcess()
 {
   m_running = false;
 }
@@ -63,7 +64,7 @@ void CCommandMode::Execute()
   }
 }
 
-bool CCommandMode::IsTestRunning() const
+bool CCommandMode::IsProcessRunning() const
 {
     return m_running;
 }

@@ -24,7 +24,7 @@ int main(int argc, char** argv)
         std::unique_ptr<CCommandMode> spCommandMode = std::make_unique<CCommandMode>(argv);
         if(spCommandMode->Init())
         {
-            spCommandMode->StartTest();
+            spCommandMode->StartProcess();
             spCommandMode->Execute();
         }
     }
