@@ -18,13 +18,13 @@
 class CColour
 {
 public:
-    CColour(eColours aColour);
-    CColour(eColours aColour, cv::Scalar lowerRange, cv::Scalar upperRange);
+    CColour(eColours colour);
+    CColour(eColours colour, cv::Scalar lowerRange, cv::Scalar upperRange);
     ~CColour();
 
-    eColours GetColour();
-    cv::Scalar GetLowerLimit();
-    cv::Scalar GetUpperLimit();
+    const eColours GetColour() const;
+    const cv::Scalar& GetLowerLimit() const;
+    const cv::Scalar& GetUpperLimit() const;
 private:
     eColours m_colour;
     cv::Scalar m_lowerLimit;

@@ -3,12 +3,12 @@
 
 namespace
 {
-constexpr const uint8_t MAXIMUM_HUE = 179;
-constexpr const uint8_t MAXIMUM_SATURATION = 255;
-constexpr const uint8_t MAXIMUM_VALUE = 255;
+    constexpr const uint8_t MAXIMUM_HUE = 179;
+    constexpr const uint8_t MAXIMUM_SATURATION = 255;
+    constexpr const uint8_t MAXIMUM_VALUE = 255;
 } // namespace
 
-CCalibration::CCalibration(/* args */)
+CCalibration::CCalibration()
 {
 }
 
@@ -24,12 +24,12 @@ bool CCalibration::InitColours(bool userCalibration)
         cv::VideoCapture cap;
         if (!cap.open(0))
         {
-            return 0;
+            return false;
         }
         cap >> source;
         if (source.empty())
         {
-            return -1;
+            return false;
         }
 
         int upperHue = 0, lowerHue = 0, upperSaturation = 0, lowerSaturation = 0, upperValue = 0, lowerValue = 0;
@@ -53,12 +53,12 @@ bool CCalibration::InitColours(bool userCalibration)
 
                 if (cv::waitKey(30) == 27) //wait till esc press
                 {
-                    std::cout<<"lowerHue: "<< lowerHue << std::endl;
-                    std::cout<<"lowerSaturation: "<< lowerSaturation << std::endl;
-                    std::cout<<"lowerValue: "<< lowerValue << std::endl;
-                    std::cout<<"upperHue: "<< upperHue << std::endl;
-                    std::cout<<"upperSaturation: "<< upperSaturation << std::endl;
-                    std::cout<<"upperValue: "<< upperValue << std::endl;
+                    std::cout << "lowerHue: " << lowerHue << std::endl;
+                    std::cout << "lowerSaturation: " << lowerSaturation << std::endl;
+                    std::cout << "lowerValue: " << lowerValue << std::endl;
+                    std::cout << "upperHue: " << upperHue << std::endl;
+                    std::cout << "upperSaturation: " << upperSaturation << std::endl;
+                    std::cout << "upperValue: " << upperValue << std::endl;
                     m_colourList.emplace_back(std::make_shared<CColour>(
                         eColours(i), cv::Scalar(lowerHue, lowerSaturation, lowerValue), cv::Scalar(upperHue, upperSaturation, upperValue)));
                     break;
@@ -75,13 +75,14 @@ bool CCalibration::InitColours(bool userCalibration)
                 eColours(i)));
         }
     }
+    return true;
 }
 
 std::shared_ptr<CColour> CCalibration::GetColour(eColours colourValue)
 {
-    for(std::shared_ptr<CColour> colour : m_colourList)
+    for (std::shared_ptr<CColour> colour : m_colourList)
     {
-        if(colour->GetColour() == colourValue)
+        if (colour->GetColour() == colourValue)
         {
             return colour;
         }

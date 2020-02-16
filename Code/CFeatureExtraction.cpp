@@ -4,7 +4,8 @@
 #include <iostream>
 #include "stdint.h"
 
-namespace{
+namespace
+{
     constexpr const int8_t BILATERFILTER_ITERATIONS = 3;
     constexpr const int8_t BILATERFILTER_KERNEL = 9;
     constexpr const int16_t BILATERFILTER_SIGMA_COLOUR = 50;
