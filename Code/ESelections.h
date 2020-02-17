@@ -12,6 +12,9 @@
 #ifndef ESELECTIONS_H
 #define ESELECTIONS_H
 
+#include <string>
+#include <map>
+
 enum eShapes 
 {
     TRIANGLE,
@@ -30,6 +33,16 @@ enum eColours
     BLACK,
     WHITE,
     END_OF_COLOURS
+};
+
+static std::map<eColours, std::string> configuredColours=
+{
+    {eColours::RED, "RED"},
+    {eColours::BLUE, "BLUE"},
+    {eColours::GREEN, "GREEN"},
+    {eColours::YELLOW, "YELLOW"},
+    {eColours::BLACK, "BLACK"},
+    {eColours::WHITE, "WHITE"}
 };
 
 #endif /*ESELECTIONS_H*/

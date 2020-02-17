@@ -16,6 +16,8 @@ SET(SOURCES
     CInteractiveMode.cpp
     CCommandMode.cpp
     CColour.cpp
+    CFeatureExtraction.cpp
+    CCalibration.cpp
     Shapes/CCircle.cpp
     Shapes/CHalfCircle.cpp
     Shapes/CSquare.cpp
@@ -31,6 +33,8 @@ SET(HEADERS
     CInteractiveMode.h
     CCommandMode.h
     CColour.h
+    CFeatureExtraction.h
+    CCalibration.h
     Shapes/CCircle.h
     Shapes/CHalfCircle.h
     Shapes/CSquare.h
