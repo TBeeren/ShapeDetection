@@ -14,10 +14,15 @@
 
 #include "ESelections.h"
 
+#include <memory>
+#include <queue>
+#include <utility>
+
+class CCommandMode;
 class CParser
 {
 public:
-    CParser(eShapes rSelectedShape, eColours rSelectedColour);
+    CParser(eShapes rSelectedShape, eColours rSelectedColour, CCommandMode* pCommandMode);
     ~CParser();
 
     /**
@@ -28,25 +33,12 @@ public:
      */
     void ParseFile(std::ifstream& rFilename);
 
-    /**
-     * @brief Checks if the given colour is configured for the program.
-     * 
-     * @param colourArgument: Given colour argument of the command. 
-     * @return true, if the colour is specified in the configuration.
-     * @return false, if the colour isn't specified in the program. 
-     */
-    bool IsConfiguredAsColour(const std::string& colourArgument);
-
-    /**
-     * @brief Checks if the given shape is configured for the program.
-     * 
-     * @param shapeArgument: Given shape argument of the command. 
-     * @return true, if the shape is specified in the configuration.
-     * @return false, if the shape isn't specified in the program. 
-     */
-    bool IsConfiguredAsShape(const std::string& shapeArgument);
-
 private:
+    eColours StringToColour(const std::string& colourString);
+    eShapes StringToShape(const std::string& shapeString);
+
+    CCommandMode* m_pCommandMode;
+
     eShapes& m_rSelectedShape;
     eColours& m_rSelectedColour;
 

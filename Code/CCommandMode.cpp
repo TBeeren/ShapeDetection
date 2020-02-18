@@ -22,7 +22,7 @@ CCommandMode::CCommandMode(char** argv)
 : CMode()
 , m_bashArguments(argv)
 , m_running(false)
-, m_spParser(std::make_unique<CParser>(m_selectedShape, m_selectedColour))
+, m_spParser(std::make_unique<CParser>(m_selectedShape, m_selectedColour, this))
 {
 }
 
@@ -67,4 +67,12 @@ void CCommandMode::Execute()
 bool CCommandMode::IsProcessRunning() const
 {
     return m_running;
+}
+
+void CCommandMode::AddToQueue(std::string shape, std::string colour)
+{
+    if(IsConfiguredAsShape(shape) && IsConfiguredAsColour(colour))
+    {
+        m_extractionQueue.push(std::make_pair<eShapes, eColours>(StringToShape(shape), StringToColour(colour)));
+    }
 }

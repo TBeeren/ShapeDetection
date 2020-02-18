@@ -39,24 +39,6 @@ public:
      */
     void Execute();
 
-    /**
-     * @brief This function checks for a valid shape user input.
-     * 
-     * @param aShape, the input value of a shape by the user.
-     * @return true, if the given shape matches with a shape in configuredShapes.
-     * @return false, if the given shape doesn't matches a shape in configuredShapes.
-     */
-    bool CheckShapeInput(const std::string& rShape);
-
-    /**
-     * @brief This function checks for a valid colour user input.
-     * 
-     * @param aColour, the input value of acolour by the user.
-     * @return true, if the given colour matches with a colour in configuredShapes.
-     * @return false, if the given colour doesn't matches a colour in configuredShapes.
-     */
-    bool CheckColourInput(const std::string& rColour);
-
 private:
     std::shared_ptr<CViewWindow> m_spViewWindow;
 
