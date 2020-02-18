@@ -1,5 +1,5 @@
 /**
- * @file CColour.h
+ * @file CInteractiveMode.h
  * @author Tim Beeren (T.Beeren@student.han.nl) Stijn Krabbenborg (S.Krabbenborg@student.han.nl) Evren Kilic (ET.Kilic@student.han.nl)
  * @brief This class makes the interactive mode. It asks a shape and colour from the user. 
  * If he enters a valid shape and colour, the shape detection will start.
@@ -46,7 +46,7 @@ public:
      * @return true, if the given shape matches with a shape in configuredShapes.
      * @return false, if the given shape doesn't matches a shape in configuredShapes.
      */
-    bool checkShapeInput(std::string aShape);
+    bool CheckShapeInput(const std::string& rShape);
 
     /**
      * @brief This function checks for a valid colour user input.
@@ -55,7 +55,7 @@ public:
      * @return true, if the given colour matches with a colour in configuredShapes.
      * @return false, if the given colour doesn't matches a colour in configuredShapes.
      */
-    bool checkColourInput(std::string aColour);
+    bool CheckColourInput(const std::string& rColour);
 
 private:
     std::shared_ptr<CViewWindow> m_spViewWindow;

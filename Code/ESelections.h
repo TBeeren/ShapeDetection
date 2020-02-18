@@ -12,6 +12,7 @@
 #ifndef ESELECTIONS_H
 #define ESELECTIONS_H
 
+#include <string>
 #include <map>
 
 enum eShapes 

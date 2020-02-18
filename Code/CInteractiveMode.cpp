@@ -43,14 +43,14 @@ void CInteractiveMode::Execute()
     CViewWindow webcamWindow("webcam window");
 }
 
-bool CInteractiveMode::checkShapeInput(std::string aShape)
+bool CInteractiveMode::CheckShapeInput(const std::string& rShape)
 {
     for(const auto &v  : configuredShapes)
     {
-        if(v.second == aShape)
+        if(v.second == rShape)
         {
             m_shape = v.first;
-            std::cout << "Object = " << aShape << std::endl;
+            std::cout << "Object = " << rShape << std::endl;
             return true;
         }
     }
@@ -59,14 +59,14 @@ bool CInteractiveMode::checkShapeInput(std::string aShape)
     return false;
 }
 
-bool CInteractiveMode::checkColourInput(std::string aColour)
+bool CInteractiveMode::CheckColourInput(const std::string& rColour)
 {
     for(const auto &v  : configuredColours)
     {
-        if(v.second == aColour)
+        if(v.second == rColour)
         {
             m_colour = v.first;
-            std::cout << "Colour = " << aColour << std::endl;
+            std::cout << "Colour = " << rColour << std::endl;
             return true;
         }
     }
