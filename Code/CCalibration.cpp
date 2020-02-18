@@ -65,6 +65,8 @@ bool CCalibration::InitColours(bool userCalibration)
                 }
             }
         }
+        cv::destroyWindow("Initialise Stream");
+        cv::destroyWindow("Initialise Values");
         cap.release();
     }
     else

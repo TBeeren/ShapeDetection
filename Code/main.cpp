@@ -17,9 +17,9 @@
 
 int main(int argc, char **argv)
 {
-    assertm(argc <= 2, "Please enter a maximum of 2 arguments");
+    assertm(argc <= 3, "Please enter a maximum of 3 arguments");
 
-    if (argc == 2)
+    if (argc == 3)
     {
         // Enter CommandMode
         std::unique_ptr<CCommandMode> spCommandMode = std::make_unique<CCommandMode>(argv);
