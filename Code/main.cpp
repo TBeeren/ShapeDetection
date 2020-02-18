@@ -9,6 +9,7 @@
  * 
  */
 
+<<<<<<< HEAD
 #include "CCommandMode.h"
 
 //Define an message with the triggered assert.
@@ -40,5 +41,14 @@ int main(int argc, char** argv)
     // Feature -> Calibration mode 
     // @brief: Enter Calibrarion window
 
+=======
+#include "CFeatureExtraction.h"
+
+#include "opencv2/opencv.hpp"
+
+#include <iostream>
+int main(int argc, char const *argv[])
+{
+>>>>>>> d6d5bd8bc361a15deecb502208b9681118ad8304
     return 0;
 }
