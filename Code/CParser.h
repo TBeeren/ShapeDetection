@@ -17,7 +17,7 @@
 class CParser
 {
 public:
-    CParser(eShapes& rSelectedShape, eColours& rSelectedColour);
+    CParser(eShapes rSelectedShape, eColours rSelectedColour);
     ~CParser();
 
     /**
@@ -35,7 +35,7 @@ public:
      * @return true, if the colour is specified in the configuration.
      * @return false, if the colour isn't specified in the program. 
      */
-    bool IsConfiguredAsColour(std::string colourArgument);
+    bool IsConfiguredAsColour(const std::string& colourArgument);
 
     /**
      * @brief Checks if the given shape is configured for the program.
@@ -44,7 +44,7 @@ public:
      * @return true, if the shape is specified in the configuration.
      * @return false, if the shape isn't specified in the program. 
      */
-    bool IsConfiguredAsShape(std::string shapeArgument);
+    bool IsConfiguredAsShape(const std::string& shapeArgument);
 
 private:
     eShapes& m_rSelectedShape;

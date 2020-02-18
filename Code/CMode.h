@@ -13,7 +13,6 @@
 #define CMODE_H
 
 #include <memory>
-#include <iostream>
 
 #include "ESelections.h" 
 
@@ -25,7 +24,7 @@ class CMode
 {
 public:
     CMode();
-    ~CMode();
+    virtual ~CMode();
     
     /**
     * @brief Initializes variables for the specified CMode.
@@ -42,8 +41,8 @@ public:
     virtual void Execute() = 0;
 
 protected:
-    eShapes m_SelectedShape;
-    eColours m_SelectedColour;
+    eShapes m_selectedShape;
+    eColours m_selectedColour;
 
 private:
     std::shared_ptr<CFeatureExtraction> m_spFeatureExtraction;

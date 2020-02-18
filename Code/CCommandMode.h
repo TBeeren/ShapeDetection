@@ -1,10 +1,10 @@
 /**
- * @file CColour.h
- * @author Tim Beeren (T.Beeren@student.han.nl) Stijn Krabbenborg (S.Krabbenborg@student.han.nl) Evren Kilic (ET.Kilic@student.han.nl)
+ * @file CCommandMode.h
+ * @author Tim Beeren (T.Beeren1@student.han.nl)
  * @brief The CCommandMode Inherits from CMode, and is responsible for parsing batch 
- *        commands from an user. 
+ *        commands, executing feature extraction, feature detection and printing output. 
  * @version 0.1
- * @date 07-02-2020
+ * @date 11-02-2020
  * 
  * @copyright Copyright (c) 2020
  * 
@@ -18,13 +18,13 @@
 #include <fstream>
 #include <cassert>
 
-//Forward Declarationsa
+//Forward Declarations
 class CParser;
 
 class CCommandMode : public CMode
 {
 public:
-    CCommandMode(char* argv[]);
+    CCommandMode(char** argv);
     virtual ~CCommandMode();
 
     /**
@@ -64,7 +64,7 @@ public:
     bool IsProcessRunning() const;
 
 private:
-    std::ifstream m_InputFile;
+    std::ifstream m_inputFile;
     char** m_bashArguments;
     bool m_running;
     std::shared_ptr<CParser> m_spParser;

@@ -2,7 +2,7 @@
  * @file CCommandMode.cpp
  * @author Tim Beeren (T.Beeren1@student.han.nl)
  * @brief The CCommandMode Inherits from CMode, and is responsible for parsing batch 
- *        commands from an user. 
+ *        commands, executing feature extraction, feature detection and printing output. 
  * @version 0.1
  * @date 11-02-2020
  * 
@@ -22,7 +22,7 @@ CCommandMode::CCommandMode(char** argv)
 : CMode()
 , m_bashArguments(argv)
 , m_running(false)
-, m_spParser(std::make_unique<CParser>(m_SelectedShape, m_SelectedColour))
+, m_spParser(std::make_unique<CParser>(m_selectedShape, m_selectedColour))
 {
 }
 
@@ -32,14 +32,14 @@ CCommandMode::~CCommandMode()
 
 bool CCommandMode::Init()
 {
-  m_InputFile.open(m_bashArguments[1]); 
+  m_inputFile.open(m_bashArguments[1]); 
 
-  if(m_InputFile.fail())
+  if(m_inputFile.fail())
   {
     std::cout << "Unable to open given file, please check your path." << std::endl;
   } 
 
-  return m_InputFile.is_open();
+  return m_inputFile.is_open();
 }
 
 void CCommandMode::StartProcess()
@@ -56,7 +56,7 @@ void CCommandMode::Execute()
 {
   if(m_running)
   {
-    m_spParser->ParseFile(m_InputFile);
+    m_spParser->ParseFile(m_inputFile);
   }
   else
   {
