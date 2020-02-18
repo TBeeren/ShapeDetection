@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>12</zoom_level>
+  <zoom_level>8</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>480</y>
-      <w>144</w>
-      <h>36</h>
+      <x>72</x>
+      <y>656</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>CInteractiveMode</panel_attributes>
     <additional_attributes/>
@@ -15,22 +15,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>204</y>
-      <w>120</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Main.cpp&gt;&gt;
-Application</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>432</x>
-      <y>480</y>
-      <w>144</w>
-      <h>48</h>
+      <x>240</x>
+      <y>656</y>
+      <w>96</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Batch&gt;&gt;
 CCommandMode</panel_attributes>
@@ -39,43 +27,46 @@ CCommandMode</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>300</y>
-      <w>120</w>
-      <h>36</h>
+      <x>208</x>
+      <y>416</y>
+      <w>280</w>
+      <h>56</h>
     </coordinates>
-    <panel_attributes>CMode</panel_attributes>
+    <panel_attributes>CMode
+--
++ Init(): bool
++ Execute(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>324</y>
-      <w>384</w>
-      <h>180</h>
+      <x>112</x>
+      <y>464</y>
+      <w>256</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>300.0;10.0;300.0;80.0;120.0;80.0;120.0;100.0;10.0;100.0;10.0;130.0</additional_attributes>
+    <additional_attributes>300.0;10.0;300.0;110.0;120.0;110.0;120.0;150.0;10.0;150.0;10.0;240.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>372</x>
-      <y>324</y>
-      <w>252</w>
-      <h>180</h>
+      <x>200</x>
+      <y>464</y>
+      <w>168</w>
+      <h>208</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>190.0;10.0;190.0;80.0;10.0;80.0;10.0;100.0;110.0;100.0;110.0;130.0</additional_attributes>
+    <additional_attributes>190.0;10.0;190.0;110.0;10.0;110.0;10.0;150.0;110.0;150.0;110.0;240.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
-      <y>492</y>
-      <w>144</w>
-      <h>36</h>
+      <x>968</x>
+      <y>728</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>CCircle</panel_attributes>
     <additional_attributes/>
@@ -83,10 +74,10 @@ CCommandMode</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>900</x>
-      <y>492</y>
-      <w>144</w>
-      <h>36</h>
+      <x>1088</x>
+      <y>728</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>CSquare</panel_attributes>
     <additional_attributes/>
@@ -94,10 +85,10 @@ CCommandMode</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>900</x>
-      <y>348</y>
-      <w>144</w>
-      <h>36</h>
+      <x>1016</x>
+      <y>568</y>
+      <w>232</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>IShape</panel_attributes>
     <additional_attributes/>
@@ -105,32 +96,32 @@ CCommandMode</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>780</x>
-      <y>372</y>
-      <w>216</w>
-      <h>144</h>
+      <x>1008</x>
+      <y>664</y>
+      <w>144</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>160.0;10.0;160.0;70.0;10.0;70.0;10.0;100.0</additional_attributes>
+    <additional_attributes>160.0;10.0;160.0;50.0;10.0;50.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>372</y>
-      <w>204</w>
-      <h>144</h>
+      <x>1128</x>
+      <y>664</y>
+      <w>136</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0;150.0;70.0;150.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;150.0;50.0;150.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1068</x>
-      <y>492</y>
-      <w>144</w>
-      <h>36</h>
+      <x>1200</x>
+      <y>728</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>CTriangle</panel_attributes>
     <additional_attributes/>
@@ -138,10 +129,10 @@ CCommandMode</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
-      <y>576</y>
-      <w>144</w>
-      <h>36</h>
+      <x>968</x>
+      <y>784</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>CHalfCircle</panel_attributes>
     <additional_attributes/>
@@ -149,10 +140,10 @@ CCommandMode</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>780</x>
-      <y>516</y>
-      <w>36</w>
-      <h>84</h>
+      <x>1008</x>
+      <y>744</y>
+      <w>24</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -160,81 +151,62 @@ CCommandMode</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>372</y>
-      <w>36</w>
-      <h>144</h>
+      <x>1128</x>
+      <y>664</y>
+      <w>24</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>348</y>
-      <w>84</w>
-      <h>48</h>
+      <x>808</x>
+      <y>624</y>
+      <w>224</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>260.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>900</x>
-      <y>300</y>
-      <w>144</w>
-      <h>36</h>
+      <x>616</x>
+      <y>184</y>
+      <w>288</w>
+      <h>64</h>
     </coordinates>
-    <panel_attributes>CColour</panel_attributes>
+    <panel_attributes>CCalibration
+--
++ ExecuteCalibration(): void
++ OpenWindow(): void
+--
+- m_colourList: std::vector&lt;&lt;std::shared_ptr&lt;CColour&gt;&gt;&gt; 
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>300</y>
-      <w>84</w>
-      <h>48</h>
+      <x>944</x>
+      <y>424</y>
+      <w>88</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>540</x>
-      <y>648</y>
-      <w>132</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes>- Arguments
-1. Colour
-2. Shape
-bg=yellow</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>564</x>
-      <y>492</y>
-      <w>72</w>
-      <h>180</h>
-    </coordinates>
-    <panel_attributes>lt=..</panel_attributes>
-    <additional_attributes>10.0;10.0;40.0;10.0;40.0;130.0</additional_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>432</x>
-      <y>564</y>
-      <w>144</w>
-      <h>48</h>
+      <x>240</x>
+      <y>712</y>
+      <w>96</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>CParser</panel_attributes>
     <additional_attributes/>
@@ -242,10 +214,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>636</y>
-      <w>144</w>
-      <h>48</h>
+      <x>72</x>
+      <y>760</y>
+      <w>96</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>CTrackBar</panel_attributes>
     <additional_attributes/>
@@ -253,10 +225,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>552</y>
-      <w>144</w>
-      <h>48</h>
+      <x>72</x>
+      <y>704</y>
+      <w>96</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>&lt;&lt;GUI&gt;&gt;
 CViewWindow</panel_attributes>
@@ -265,10 +237,10 @@ CViewWindow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>504</y>
-      <w>36</w>
-      <h>72</h>
+      <x>112</x>
+      <y>672</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -276,10 +248,10 @@ CViewWindow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>588</y>
-      <w>36</w>
-      <h>72</h>
+      <x>112</x>
+      <y>728</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -287,33 +259,38 @@ CViewWindow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>696</x>
-      <y>300</y>
-      <w>156</w>
-      <h>36</h>
+      <x>600</x>
+      <y>352</y>
+      <w>352</w>
+      <h>168</h>
     </coordinates>
-    <panel_attributes>CFeatureExtraction</panel_attributes>
+    <panel_attributes>CFeatureExtraction
+--
++ Init(): bool
++ ExtractColours(cv::mat src, eColours colour): cv::mat
++ ExtractEdges(cd::mat src): cv::mat
++ ExtractContours(cv::mat src): std::vector&lt;std::vector&lt;cv::Points&gt;&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>300</y>
-      <w>72</w>
-      <h>48</h>
+      <x>480</x>
+      <y>424</y>
+      <w>136</w>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1</panel_attributes>
-    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>150.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>492</x>
-      <y>516</y>
-      <w>36</w>
-      <h>72</h>
+      <x>280</x>
+      <y>680</y>
+      <w>24</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -321,10 +298,10 @@ m1=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>696</x>
-      <y>348</y>
-      <w>156</w>
-      <h>36</h>
+      <x>600</x>
+      <y>568</y>
+      <w>216</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>CFeatureDetection</panel_attributes>
     <additional_attributes/>
@@ -332,48 +309,56 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>324</y>
-      <w>96</w>
-      <h>72</h>
+      <x>464</x>
+      <y>464</y>
+      <w>152</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1</panel_attributes>
-    <additional_attributes>60.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+    <additional_attributes>170.0;210.0;10.0;210.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>324</x>
-      <y>204</y>
-      <w>120</w>
-      <h>48</h>
+      <x>1016</x>
+      <y>352</y>
+      <w>232</w>
+      <h>168</h>
     </coordinates>
-    <panel_attributes>&lt;&lt;artefact&gt;&gt;
-CMakeList</panel_attributes>
+    <panel_attributes>CColour
+--
+- m_minRange
+- m_maxRange
+- m_calibratedRange
+- m_calibratedRange
+- m_colourEnum: eColours
+--
+
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
-      <y>216</y>
-      <w>132</w>
-      <h>36</h>
+      <x>752</x>
+      <y>240</y>
+      <w>32</w>
+      <h>128</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>588</x>
-      <y>240</y>
-      <w>48</w>
-      <h>84</h>
+      <x>896</x>
+      <y>208</y>
+      <w>248</w>
+      <h>160</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=1</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=.&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;290.0;10.0;290.0;180.0</additional_attributes>
   </element>
 </diagram>

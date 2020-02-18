@@ -12,17 +12,16 @@
 #ifndef ESELECTIONS_H
 #define ESELECTIONS_H
 
-#include <string>
 #include <map>
 
 enum eShapes 
 {
-    TRIANGLE,
-    SQUARE,
-    CIRCLE,
-    HALF_CIRCLE,
+    TRIANGLE = 0,
+    SQUARE = 1,
+    CIRCLE = 2,
+    HALF_CIRCLE = 3,
 
-    END_OF_SHAPES
+    END_OF_SHAPES = 4
 };
 
 static std::map<eShapes, std::string> configuredShapes=
@@ -35,14 +34,14 @@ static std::map<eShapes, std::string> configuredShapes=
 
 enum eColours
 {
-    RED,
-    BLUE,
-    GREEN,
-    YELLOW,
-    BLACK,
-    WHITE,
+    RED = 0,
+    BLUE = 1,
+    GREEN = 2,
+    YELLOW = 3,
+    BLACK = 4,
+    WHITE = 5,
 
-    END_OF_COLOURS
+    END_OF_COLOURS = 6
 };
 
 static std::map<eColours, std::string> configuredColours=

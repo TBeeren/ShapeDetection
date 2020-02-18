@@ -1,3 +1,15 @@
+/**
+ * @file CInteractiveMode.cpp
+ * @author Tim Beeren (T.Beeren@student.han.nl) Stijn Krabbenborg (S.Krabbenborg@student.han.nl) Evren Kilic (ET.Kilic@student.han.nl)
+ * @brief This class makes the interactive mode. It asks a shape and colour from the user. 
+ * If he enters a valid shape and colour, the shape detection will start.
+ * @version 0.1
+ * @date 07-02-2020
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
+
 #include "CInteractiveMode.h"
 #include "CViewWindow.h"
 
@@ -23,12 +35,12 @@ bool CInteractiveMode::Init()
     std::cout << "Choose the object:" << std::endl;
     std::cin >> shape ;
 
-    if(checkShapeInput(shape))
+    if(CheckShapeInput(shape))
     {
         std::cout << "Choose the color:" << std::endl;
         std::cin >> colour ;  
 
-        if(checkColourInput(colour))
+        if(CheckColourInput(colour))
         {
             return true;
         }

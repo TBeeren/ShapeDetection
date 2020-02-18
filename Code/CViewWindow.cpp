@@ -15,16 +15,26 @@ CViewWindow::CViewWindow(std::string windowName)
     cv::VideoCapture cap;
     if(!cap.open(0))
     {
-        std::cout << "Webcam could not open!!" << std::endl;
+        std::cout << "Unable to open webcam!!" << std::endl;
     }
+
+    cv::Mat frame;
 
     for(;;)
     {
-          cv::Mat frame;
-          cap >> frame;
-          if( frame.empty() ) break; // end of video stream
-          imshow(m_windowName, frame);
-          if( cv::waitKey(10) == 27 ) break; // stop capturing by pressing ESC 
+        cap >> frame;
+
+        if( frame.empty() ) 
+        {
+            break; // end of video stream
+        }
+
+        imshow(m_windowName, frame);
+
+        if( cv::waitKey(10) == 27 )
+        {
+            break; // stop capturing by pressing ESC 
+        }
     }
     cv::destroyWindow(m_windowName);
 }
