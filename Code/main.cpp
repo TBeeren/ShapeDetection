@@ -9,6 +9,39 @@
  * 
  */
 
+<<<<<<< HEAD
+#include "CCommandMode.h"
+
+//Define an message with the triggered assert.
+#define assertm(exp, msg) assert(((void)msg, exp))
+
+int main(int argc, char** argv)
+{
+    assertm(argc <= 2, "Please enter a maximum of 2 arguments");
+
+    if(argc == 2)
+    {
+        // Enter CommandMode
+        std::unique_ptr<CCommandMode> spCommandMode = std::make_unique<CCommandMode>(argv);
+        if(spCommandMode->Init())
+        {
+            spCommandMode->StartProcess();
+            spCommandMode->Execute();
+        }
+    }
+    else if(argc == 1)
+    {
+        // Enter GUI mode
+    }
+    else
+    {
+        std::cout << "Please enter a maximum of 2 arguments" << std::endl;
+    }
+
+    // Feature -> Calibration mode 
+    // @brief: Enter Calibrarion window
+
+=======
 #include "CFeatureExtraction.h"
 
 #include "opencv2/opencv.hpp"
@@ -16,5 +49,6 @@
 #include <iostream>
 int main(int argc, char const *argv[])
 {
+>>>>>>> d6d5bd8bc361a15deecb502208b9681118ad8304
     return 0;
 }
