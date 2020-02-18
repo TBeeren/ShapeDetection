@@ -11,93 +11,62 @@
 
 #include "CParser.h"
 
+#include "CCommandMode.h"
 #include "ESelections.h"
 #include <iostream>
 #include <fstream>
 
-CParser::CParser(eShapes rSelectedShape, eColours rSelectedColour)
-: m_rSelectedShape(rSelectedShape)
-, m_rSelectedColour(rSelectedColour)
+CParser::CParser(eShapes rSelectedShape, eColours rSelectedColour, CCommandMode* pCommandMode)
+    : m_rSelectedShape(rSelectedShape), m_rSelectedColour(rSelectedColour), m_pCommandMode(pCommandMode)
 {
 }
 
 CParser::~CParser()
 {
+    delete m_pCommandMode;
 }
 
-void CParser::ParseFile(std::ifstream& rFilename)
+void CParser::ParseFile(std::ifstream &rFilename)
 {
-    if(rFilename.is_open())
+    if (rFilename.is_open())
     {
         do
         {
             std::string line;
-            std::getline(rFilename, line); 
+            std::getline(rFilename, line);
 
-            if(line[0] != '#' && !line.empty())
+            if (line[0] != '#' && !line.empty())
             {
                 int whitespacePos = 0;
                 std::string colour = "";
                 std::string shape = "";
 
-                for(int i = 0; i < line.size(); ++i)
+                for (int i = 0; i < line.size(); ++i)
                 {
-                    if(line[i] == ' ')
+                    if (line[i] == ' ')
                     {
                         whitespacePos = i;
                         break;
                     }
                 }
 
-                for(int i = 0; i < whitespacePos; ++i)
+                for (int i = 0; i < whitespacePos; ++i)
                 {
                     shape = shape + line[i];
                 }
 
-                for(int i = whitespacePos + 1; i < line.size(); ++i)
+                for (int i = whitespacePos + 1; i < line.size(); ++i)
                 {
                     colour = colour + line[i];
                 }
 
-                IsConfiguredAsShape(shape);
-                IsConfiguredAsColour(colour);
+                m_pCommandMode->AddToQueue(shape, colour);
             }
 
-        } while(!rFilename.eof());
-    } 
+        } while (!rFilename.eof());
+    }
     else
     {
         std::cout << "[WARNING]-> unable to open the inputfile." << std::endl;
     }
-    
-}
-
-bool CParser::IsConfiguredAsColour(const std::string& cmdArgument)
-{
-    for(const std::pair<const eColours, std::__cxx11::string>& rColour : configuredColours)
-    {
-        if(rColour.second == cmdArgument)
-        {
-            m_rSelectedColour = rColour.first;
-            return true;
-        }
-    }
-
-    std::cout << "[WARNING]-> Please provide a colour as configurated." << std::endl;
-    return false;
-}
-
-bool CParser::IsConfiguredAsShape(const std::string& cmdArgument)
-{
-    for(const std::pair<const eShapes, std::__cxx11::string>& rShape : configuredShapes)
-    {
-        if(rShape.second == cmdArgument)
-        {
-            m_rSelectedShape = rShape.first;
-            return true;
-        }
-    }
-
-    std::cout << "Please provide a shape as configurated:" << std::endl;
-    return false;
 }

@@ -42,6 +42,28 @@ public:
     virtual void Execute() = 0;
 
 protected:
+    /**
+     * @brief Checks if the given colour is configured for the program.
+     * 
+     * @param colourArgument: Given colour argument of the command. 
+     * @return true, if the colour is specified in the configuration.
+     * @return false, if the colour isn't specified in the program. 
+     */
+    bool IsConfiguredAsColour(const std::string& colourArgument);
+
+    /**
+     * @brief Checks if the given shape is configured for the program.
+     * 
+     * @param shapeArgument: Given shape argument of the command. 
+     * @return true, if the shape is specified in the configuration.
+     * @return false, if the shape isn't specified in the program. 
+     */
+    bool IsConfiguredAsShape(const std::string& shapeArgument);
+
+
+    eColours StringToColour(const std::string& colourString);
+    eShapes StringToShape(const std::string& shapeString);
+
     eShapes m_selectedShape;
     eColours m_selectedColour;
 

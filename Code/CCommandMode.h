@@ -17,6 +17,7 @@
 
 #include <fstream>
 #include <cassert>
+#include <queue>
 
 //Forward Declarations
 class CParser;
@@ -63,7 +64,10 @@ public:
      */
     bool IsProcessRunning() const;
 
+    void AddToQueue(std::string shape, std::string colour);
+
 private:
+    std::queue<std::pair<eShapes, eColours>> m_extractionQueue;
     std::ifstream m_inputFile;
     char** m_bashArguments;
     bool m_running;

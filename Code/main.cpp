@@ -10,34 +10,40 @@
  */
 
 #include "CCommandMode.h"
+#include "CInteractiveMode.h"
 
 //Define an message with the triggered assert.
 #define assertm(exp, msg) assert(((void)msg, exp))
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     assertm(argc <= 2, "Please enter a maximum of 2 arguments");
 
-    if(argc == 2)
+    if (argc == 2)
     {
         // Enter CommandMode
         std::unique_ptr<CCommandMode> spCommandMode = std::make_unique<CCommandMode>(argv);
-        if(spCommandMode->Init())
+        if (spCommandMode->Init())
         {
             spCommandMode->StartProcess();
             spCommandMode->Execute();
         }
     }
-    else if(argc == 1)
+    else if (argc == 1)
     {
         // Enter GUI mode
+        std::unique_ptr<CInteractiveMode> spInteractiveMode = std::make_unique<CInteractiveMode>();
+        if (spInteractiveMode->Init())
+        {
+            spInteractiveMode->Execute();
+        }
     }
     else
     {
         std::cout << "Please enter a maximum of 2 arguments" << std::endl;
     }
 
-    // Feature -> Calibration mode 
+    // Feature -> Calibration mode
     // @brief: Enter Calibrarion window
 
     return 0;
