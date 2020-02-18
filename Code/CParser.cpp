@@ -27,7 +27,7 @@ CParser::~CParser()
 
 void CParser::ParseFile(std::ifstream& rFilename)
 {
-    if(rFilename.is_open)
+    if(rFilename.is_open())
     {
         do
         {

@@ -12,10 +12,6 @@
 #ifndef ESELECTIONS_H
 #define ESELECTIONS_H
 
-<<<<<<< HEAD
-=======
-#include <string>
->>>>>>> d6d5bd8bc361a15deecb502208b9681118ad8304
 #include <map>
 
 enum eShapes 
@@ -46,16 +42,6 @@ enum eColours
     WHITE = 5,
 
     END_OF_COLOURS = 6
-};
-
-static std::map<eColours, std::string> configuredColours=
-{
-    {eColours::RED, "RED"},
-    {eColours::BLUE, "BLUE"},
-    {eColours::GREEN, "GREEN"},
-    {eColours::YELLOW, "YELLOW"},
-    {eColours::BLACK, "BLACK"},
-    {eColours::WHITE, "WHITE"}
 };
 
 static std::map<eColours, std::string> configuredColours=

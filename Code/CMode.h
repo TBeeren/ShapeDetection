@@ -13,6 +13,7 @@
 #define CMODE_H
 
 #include <memory>
+#include <iostream>
 
 #include "ESelections.h" 
 
