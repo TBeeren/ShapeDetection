@@ -12,6 +12,7 @@
 
 #include "CInteractiveMode.h"
 #include "CViewWindow.h"
+#include "CFeatureExtraction.h"
 
 #include <iostream>
 #include "opencv2/imgcodecs.hpp"
@@ -52,5 +53,25 @@ bool CInteractiveMode::Init()
 void CInteractiveMode::Execute()
 {
     //CViewWindow sourceWindow("src window", cv::imread( cv::samples::findFile("../../img/colored_blocks.jpg")));
+    std::shared_ptr<CFeatureExtraction> featureExtraction = std::make_shared<CFeatureExtraction>();
+    featureExtraction->Init(false);
     CViewWindow webcamWindow("webcam window");
+    cv::Mat source;
+    std::vector<std::vector<cv::Point>> extractedCorners;
+    for(;;)
+    {
+        webcamWindow.UpdateSource();
+        source = webcamWindow.GetSource();
+        extractedCorners = featureExtraction->GetCornerPoints(source, m_colour);
+        //TODO: call for feature detection
+        if( cv::waitKey(10) == 110 )
+        {
+            Init(); // stop capturing by pressing ESC 
+        }
+        if( cv::waitKey(30) == 27 )
+        {
+            break; // stop capturing by pressing ESC 
+        }
+    }
+
 }

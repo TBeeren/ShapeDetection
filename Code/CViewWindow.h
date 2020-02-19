@@ -48,12 +48,16 @@ public:
      */
     ~CViewWindow();
 
+    void UpdateSource(bool updateWindow = true);
+    cv::Mat GetSource();
+
 private:
     std::unique_ptr<CTrackBar<eShapes>> m_spColourTrackBar;
     std::unique_ptr<CTrackBar<eColours>> m_spShapeTrackBar;
 
     std::string m_windowName;
     cv::Mat m_src;
+    std::shared_ptr<cv::VideoCapture> m_spVideoCapture;
 };
 
 #endif /*CVIEWWINDOW_H*/
