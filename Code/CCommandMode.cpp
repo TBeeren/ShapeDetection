@@ -16,7 +16,6 @@
 #include "CMode.h"
 #include "CParser.h"
 #include <fstream>
-#include <chrono>
 
 //Define an message with the triggered assert.
 #define assertm(exp, msg) assert(((void)msg, exp))
@@ -71,8 +70,6 @@ void CCommandMode::Execute()
     {
       source = cv::imread(m_bashArguments[2]);
       extractedCorners = featureExtraction->GetCornerPoints(source, m_extractionQueue.front().second);
-      //TODO FeatureDetection
-      //The function below will log to a file, and execute the detect function.
       //ProcessOutput(featureDetection->Detect(extractedCorners));
       ProcessOutput(4, cv::Point(6,2));
       m_extractionQueue.pop();
@@ -85,7 +82,7 @@ void CCommandMode::Execute()
   }
 }
 
-void CCommandMode::ProcessOutput(uint64_t surfaceArea, cv::Point centerPoint)
+void CCommandMode::ProcessOutput(const uint64_t& rSurfaceArea, const cv::Point& centerPoint)
 {
   std::string pointValues = "(" + std::to_string(centerPoint.x) + "," + std::to_string(centerPoint.y) + ")";
   std::cout << "-----------------------------------------------------------------" << std::endl;
@@ -95,10 +92,7 @@ void CCommandMode::ProcessOutput(uint64_t surfaceArea, cv::Point centerPoint)
   if(m_fileLogEnabled)
   {
     Log("----------------------------------------------------------------");
-    //Log center point
     Log("Shape detected at", pointValues);
-
-    //Log surface area
     Log("The Surface area is", std::to_string(surfaceArea));
   }
 }
