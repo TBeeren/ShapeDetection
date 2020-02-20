@@ -64,6 +64,9 @@ protected:
     eColours StringToColour(const std::string& colourString);
     eShapes StringToShape(const std::string& shapeString);
 
+    const std::string& ColourToString(eColours eColour);
+    const std::string& ShapeToString(eShapes eShape);
+
     eShapes m_selectedShape;
     eColours m_selectedColour;
 

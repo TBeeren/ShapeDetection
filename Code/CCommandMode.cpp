@@ -69,8 +69,20 @@ void CCommandMode::Execute()
     while(!m_extractionQueue.empty())
     {
       source = cv::imread(m_bashArguments[2]);
+      std::string shape = ShapeToString(m_extractionQueue.front().first);
+      std::string colour = ColourToString(m_extractionQueue.front().second);
+
+      std::cout << "-----------------------------------------------------------------" << std::endl;
+      std::cout << "Shape: " << shape << std::endl;
+      std::cout << "Colour: " << colour << std::endl;
       extractedCorners = featureExtraction->GetCornerPoints(source, m_extractionQueue.front().second);
       //ProcessOutput(featureDetection->Detect(extractedCorners));
+      if(m_fileLogEnabled)
+      {
+          Log("----------------------------------------------------------------");
+          Log("Shape: ", shape);
+          Log("Colour: ", colour);
+      }
       ProcessOutput(4, cv::Point(6,2));
       m_extractionQueue.pop();
     }
@@ -82,16 +94,14 @@ void CCommandMode::Execute()
   }
 }
 
-void CCommandMode::ProcessOutput(const uint64_t& rSurfaceArea, const cv::Point& centerPoint)
+void CCommandMode::ProcessOutput(uint64_t surfaceArea, const cv::Point& centerPoint)
 {
   std::string pointValues = "(" + std::to_string(centerPoint.x) + "," + std::to_string(centerPoint.y) + ")";
-  std::cout << "-----------------------------------------------------------------" << std::endl;
   std::cout << "Shape detected at: " << pointValues << std::endl;
   std::cout << "Surface area: " << surfaceArea << std::endl;
   
   if(m_fileLogEnabled)
   {
-    Log("----------------------------------------------------------------");
     Log("Shape detected at", pointValues);
     Log("The Surface area is", std::to_string(surfaceArea));
   }

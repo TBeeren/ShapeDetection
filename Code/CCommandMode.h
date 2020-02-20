@@ -46,10 +46,10 @@ public:
     /**
      * @brief Prints the output values to a file or terminal (or both).
      * 
-     * @param rSurfaceArea, Calculated surface area from the detected shape
+     * @param surfaceArea, Calculated surface area from the detected shape
      * @param rCenterPoint, Calculated centerpoint from the detected shape
      */
-    void ProcessOutput(const uint64_t& rSurfaceArea, const cv::Point& centerPoint);
+    void ProcessOutput(uint64_t surfaceArea, const cv::Point& centerPoint);
     
     /**
      * @brief Start the execution process of the batch file. This functionality 
