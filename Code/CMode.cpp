@@ -59,3 +59,53 @@ eShapes CMode::StringToShape(const std::string& shapeString)
         }
     }
 }
+
+cv::Scalar CMode::EnumToColour(eColours colour)
+{
+    uint16_t r, g, b;
+
+    switch(colour){
+        case eColours::BLACK:
+        r = 0;
+        g = 0;
+        b = 0;
+        break;
+
+        case eColours::BLUE:
+        r = 0;
+        g = 0;
+        b = 255;
+        break;
+
+        case eColours::GREEN:
+        r = 0;
+        g = 255;
+        b = 0;
+        break;
+
+        case eColours::RED:
+        r = 255;
+        g = 0;
+        b = 0;
+        break;
+
+        case eColours::WHITE:
+        r = 255;
+        g = 255;
+        b = 255;
+        break;
+
+        case eColours::YELLOW:
+        r = 255;
+        g = 255;
+        b = 0;
+        break;
+
+        default:
+        r = 0;
+        g = 255;
+        b = 255;
+        break;
+    }
+    return cv::Scalar(b, g, r);
+}

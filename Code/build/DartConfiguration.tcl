@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/evren/Repos/han_wor_robots_2020_s2/Code
-BuildDirectory: /home/evren/Repos/han_wor_robots_2020_s2/Code/build
+SourceDirectory: /home/stijnk/han_wor_robots_2020_s2/Code
+BuildDirectory: /home/stijnk/han_wor_robots_2020_s2/Code/build
 
 # Where to place the cost data store
 CostDataFile: 
@@ -14,7 +14,7 @@ CostDataFile:
 Site: pop-os
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Linux-g++-7
+BuildName: Linux-c++
 
 # Subprojects
 LabelsForSubprojects: 
@@ -36,7 +36,7 @@ ScpCommand: /usr/bin/scp
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/evren/Repos/han_wor_robots_2020_s2/Code"
+ConfigureCommand: "/usr/bin/cmake" "/home/stijnk/han_wor_robots_2020_s2/Code"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
@@ -72,8 +72,8 @@ UpdateOptions:
 UpdateType: 
 
 # Compiler info
-Compiler: /usr/bin/g++-7
-CompilerVersion: 
+Compiler: /usr/bin/c++
+CompilerVersion: 7.4.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
@@ -81,7 +81,7 @@ ValgrindCommand:
 ValgrindCommandOptions: 
 MemoryCheckType: 
 MemoryCheckSanitizerOptions: 
-MemoryCheckCommand: MEMORYCHECK_COMMAND-NOTFOUND
+MemoryCheckCommand: /usr/bin/valgrind
 MemoryCheckCommandOptions: 
 MemoryCheckSuppressionFile: 
 
