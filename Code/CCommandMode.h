@@ -49,7 +49,7 @@ public:
      * @param surfaceArea, Calculated surface area from the detected shape
      * @param rCenterPoint, Calculated centerpoint from the detected shape
      */
-    void ProcessOutput(uint64_t surfaceArea, const cv::Point& centerPoint);
+    void ProcessOutput(uint64_t surfaceArea, const cv::Point& centerPoint, clock_t duration);
     
     /**
      * @brief Start the execution process of the batch file. This functionality 

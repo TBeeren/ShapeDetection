@@ -17,6 +17,7 @@
 #include "CMode.h"
 #include "CParser.h"
 #include <fstream>
+#include <ctime>
 
 //Define an message with the triggered assert.
 #define assertm(exp, msg) assert(((void)msg, exp))
@@ -68,6 +69,7 @@ void CCommandMode::Execute()
     std::vector<std::vector<cv::Point>> extractedCorners;
     std::vector<std::vector<cv::Point>> extractedShapeContours;
     cv::Mat source;
+    clock_t startTimer, endTimer;
 
     while(!m_extractionQueue.empty())
     {
@@ -78,18 +80,32 @@ void CCommandMode::Execute()
       std::cout << "-----------------------------------------------------------------" << std::endl;
       std::cout << "Shape: " << shape << std::endl;
       std::cout << "Colour: " << colour << std::endl;
+      startTimer = clock();
       extractedCorners = featureExtraction->GetCornerPoints(source, m_extractionQueue.front().second);
       featureDetection->SetShape(m_extractionQueue.front().first);
       extractedShapeContours = featureDetection->ShapeFilter(extractedCorners);
+      endTimer = clock();
+      long duration = endTimer - startTimer;
+      
       if(m_fileLogEnabled)
       {
           Log("----------------------------------------------------------------");
           Log("Shape: ", shape);
           Log("Colour: ", colour);
       }
-      for (const std::vector<cv::Point>& shapeContour : extractedShapeContours)
+      if(extractedShapeContours.size())
       {
-          ProcessOutput(featureDetection->CalcSurfaceArea(shapeContour), featureDetection->FindCenter(shapeContour));
+        for (const std::vector<cv::Point>& shapeContour : extractedShapeContours)
+        {
+            ProcessOutput(featureDetection->CalcSurfaceArea(shapeContour), featureDetection->FindCenter(shapeContour), duration);
+        }
+      }
+      else
+      {
+        Log("Shape not detected in image");
+        std::cout << "Shape not detected in image" << std::endl;
+        std::cout << "Operation time: " << duration << std::endl;
+        Log("Operation time", std::to_string(duration));
       }
       m_extractionQueue.pop();
     }
@@ -101,16 +117,18 @@ void CCommandMode::Execute()
   }
 }
 
-void CCommandMode::ProcessOutput(uint64_t surfaceArea, const cv::Point& centerPoint)
+void CCommandMode::ProcessOutput(uint64_t surfaceArea, const cv::Point& centerPoint, clock_t duration)
 {
   std::string pointValues = "(" + std::to_string(centerPoint.x) + "," + std::to_string(centerPoint.y) + ")";
   std::cout << "Shape detected at: " << pointValues << std::endl;
   std::cout << "Surface area: " << surfaceArea << std::endl;
+  std::cout << "Operation time: " << duration << std::endl;
   
   if(m_fileLogEnabled)
   {
     Log("Shape detected at", pointValues);
     Log("The Surface area is", std::to_string(surfaceArea));
+    Log("Operation time", std::to_string(duration));
   }
 }
 

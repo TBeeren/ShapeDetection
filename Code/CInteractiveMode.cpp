@@ -13,6 +13,7 @@
 #include "CInteractiveMode.h"
 #include "CViewWindow.h"
 #include "CFeatureExtraction.h"
+#include "CFeatureDetection.h"
 #include "CColour.h"
 
 #include <iostream>
@@ -56,17 +57,21 @@ bool CInteractiveMode::Init()
 void CInteractiveMode::Execute()
 {
     std::shared_ptr<CFeatureExtraction> featureExtraction = std::make_shared<CFeatureExtraction>();
-    featureExtraction->Init(true);
+    std::shared_ptr<CFeatureDetection> featureDetection = std::make_shared<CFeatureDetection>();
+    featureExtraction->Init(false);
+    featureDetection->SetShape(m_selectedShape);
     CViewWindow webcamWindow("webcam window");
     cv::Mat source;
-    std::vector<std::vector<cv::Point>> extractedCorners;
+    std::vector<std::vector<cv::Point>> extractedCorners, filteredContours;
+
     for(;;)
     {
         webcamWindow.UpdateSource();
         source = webcamWindow.GetSource();
         extractedCorners = featureExtraction->GetCornerPoints(source, m_selectedColour);
+        filteredContours = featureDetection->ShapeFilter(extractedCorners);
 
-        for(std::vector<cv::Point>& shape : extractedCorners)
+        for(std::vector<cv::Point>& shape : filteredContours)
         {
             DrawShape(source, shape);
         }
@@ -74,6 +79,7 @@ void CInteractiveMode::Execute()
         if( cv::waitKey(10) == 110 )
         {
             Init(); // stop capturing by pressing n and enter a new shape and colour
+            featureDetection->SetShape(m_selectedShape);
         }
         if( cv::waitKey(30) == 27 )
         {

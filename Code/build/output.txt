@@ -1,74 +1,125 @@
 ----------------------------------------------------------------
 Shape: : TRIANGLE
 Colour: : RED
+Shape detected at: (491,666)
+The Surface area is: 18840
+Operation time: 1484642
 ----------------------------------------------------------------
 Shape: : TRIANGLE
 Colour: : GREEN
+Shape not detected in image
+Operation time: 1499250
 ----------------------------------------------------------------
 Shape: : TRIANGLE
 Colour: : WHITE
+Shape not detected in image
+Operation time: 1475075
 ----------------------------------------------------------------
 Shape: : TRIANGLE
 Colour: : YELLOW
+Shape not detected in image
+Operation time: 1516791
 ----------------------------------------------------------------
 Shape: : TRIANGLE
 Colour: : BLUE
+Shape not detected in image
+Operation time: 1478183
 ----------------------------------------------------------------
 Shape: : TRIANGLE
 Colour: : BLACK
+Shape not detected in image
+Operation time: 1485163
 ----------------------------------------------------------------
 Shape: : SQUARE
 Colour: : RED
+Shape not detected in image
+Operation time: 1481965
 ----------------------------------------------------------------
 Shape: : SQUARE
 Colour: : GREEN
+Shape not detected in image
+Operation time: 1506406
 ----------------------------------------------------------------
 Shape: : SQUARE
 Colour: : WHITE
+Shape not detected in image
+Operation time: 1517323
 ----------------------------------------------------------------
 Shape: : SQUARE
 Colour: : YELLOW
+Shape not detected in image
+Operation time: 1497851
 ----------------------------------------------------------------
 Shape: : SQUARE
 Colour: : BLUE
+Shape not detected in image
+Operation time: 1499568
 ----------------------------------------------------------------
 Shape: : SQUARE
 Colour: : BLACK
+Shape not detected in image
+Operation time: 1489750
 ----------------------------------------------------------------
 Shape: : CIRCLE
 Colour: : RED
+Shape detected at: (486,1164)
+The Surface area is: 24670
+Operation time: 1466341
 ----------------------------------------------------------------
 Shape: : CIRCLE
 Colour: : GREEN
+Shape not detected in image
+Operation time: 1491619
 ----------------------------------------------------------------
 Shape: : CIRCLE
 Colour: : WHITE
+Shape detected at: (486,1164)
+The Surface area is: 27362
+Operation time: 1473078
 ----------------------------------------------------------------
 Shape: : CIRCLE
 Colour: : YELLOW
+Shape detected at: (805,1300)
+The Surface area is: 27249
+Operation time: 1512316
 ----------------------------------------------------------------
 Shape: : CIRCLE
 Colour: : BLUE
+Shape not detected in image
+Operation time: 1468542
 ----------------------------------------------------------------
 Shape: : CIRCLE
 Colour: : BLACK
+Shape not detected in image
+Operation time: 1493293
 ----------------------------------------------------------------
 Shape: : HALF_CIRCLE
 Colour: : RED
+Shape not detected in image
+Operation time: 1465827
 ----------------------------------------------------------------
 Shape: : HALF_CIRCLE
 Colour: : GREEN
+Shape not detected in image
+Operation time: 1500221
 ----------------------------------------------------------------
 Shape: : HALF_CIRCLE
 Colour: : WHITE
+Shape not detected in image
+Operation time: 1476429
 ----------------------------------------------------------------
 Shape: : HALF_CIRCLE
 Colour: : YELLOW
+Shape detected at: (135,1450)
+The Surface area is: 39288
+Operation time: 1506529
 ----------------------------------------------------------------
 Shape: : HALF_CIRCLE
 Colour: : BLUE
-Shape detected at: (622,744)
-The Surface area is: 24819
+Shape not detected in image
+Operation time: 1503408
 ----------------------------------------------------------------
 Shape: : HALF_CIRCLE
 Colour: : BLACK
+Shape not detected in image
+Operation time: 1503539
