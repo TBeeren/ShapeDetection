@@ -77,15 +77,7 @@ protected:
      * @return eShapes, returns the enum.
      */
     eShapes StringToShape(const std::string& shapeString);
-
-    /**
-     * @brief The function returns the colour in cv::Scalar based on the enum as argument.
-     * 
-     * @param colour, an enum as colour.
-     * @return cv::Scalar , the colour in RGB.
-     */
-    cv::Scalar EnumToColour(eColours colour);
-
+    
     /**
      * @brief Is the shape that will be detected.
      * 
