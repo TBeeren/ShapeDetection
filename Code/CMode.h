@@ -79,6 +79,22 @@ protected:
     eShapes StringToShape(const std::string& shapeString);
     
     /**
+     * @brief 
+     * 
+     * @param eColour 
+     * @return const std::string& 
+     */
+    const std::string& ColourToString(eColours eColour);
+
+    /**
+     * @brief 
+     * 
+     * @param eShape 
+     * @return const std::string& 
+     */
+    const std::string& ShapeToString(eShapes eShape);
+
+    /**
      * @brief Is the shape that will be detected.
      * 
      */
