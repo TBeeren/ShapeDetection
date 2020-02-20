@@ -33,20 +33,20 @@ public:
      * @param windowName, name of the window
      * @param src, src of the image
      */
-    CViewWindow(std::string windowName, cv::Mat src);
+    explicit CViewWindow(const std::string& rWindowName, cv::Mat src);
 
     /**
      * @brief Construct a new CViewWindow object. This constructor opens a window with webcam.
      * 
      * @param windowName, name of the window
      */
-    CViewWindow(std::string windowName);
+    explicit CViewWindow(const std::string& rWindowName);
 
     /**
      * @brief Destroy the CViewWindow object
      * 
      */
-    ~CViewWindow();
+    virtual ~CViewWindow();
 
     void UpdateSource(bool updateWindow = true);
     cv::Mat GetSource();

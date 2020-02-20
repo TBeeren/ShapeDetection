@@ -18,7 +18,7 @@ class CTriangle: public CShape
 {
 public:
     CTriangle();
-    ~CTriangle();
+    virtual ~CTriangle();
 
     bool Process(std::vector<cv::Point> contour);
 private:

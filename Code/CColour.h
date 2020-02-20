@@ -18,9 +18,9 @@
 class CColour
 {
 public:
-    CColour(eColours colour);
-    CColour(eColours colour, cv::Scalar lowerRange, cv::Scalar upperRange);
-    ~CColour();
+    explicit CColour(eColours colour);
+    explicit CColour(eColours colour, cv::Scalar lowerRange, cv::Scalar upperRange);
+    virtual ~CColour();
 
     const eColours GetColour() const;
     const cv::Scalar& GetLowerLimit() const;

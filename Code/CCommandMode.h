@@ -26,7 +26,7 @@ class CParser;
 class CCommandMode : public CMode
 {
 public:
-    CCommandMode(char** argv);
+    explicit CCommandMode(char** argv);
     virtual ~CCommandMode();
 
     /**
@@ -52,34 +52,12 @@ public:
     void ProcessOutput(uint64_t surfaceArea, const cv::Point& centerPoint, clock_t duration);
     
     /**
-     * @brief Start the execution process of the batch file. This functionality 
-     * provides the option to make it preemptive if needed.
-     * 
-     */
-    void StartProcess();
-    
-    /**
-     * @brief Stops the execution process of the batch file. This functionality 
-     * provides the option to make it preemptive if needed.
-     * 
-     */
-    void StopProcess();
-
-    /**
-     * @brief Checks if the process is running.
-     * 
-     * @return true, if the test is running.
-     * @return false, if the test is running.
-     */
-    bool IsProcessRunning() const;
-
-    /**
      * @brief Add task to the queue, to schedule a new task. The used algorithm is FIFO.
      * 
      * @param shape, string of the shape to detect.
      * @param colour, string of the colour to detect.
      */
-    void AddToQueue(std::string shape, std::string colour);
+    void AddToQueue(const std::string& shape, const std::string& colour);
 
     /**
      * @brief Logger with only a description string. The logger will print this line to an outputfile. 

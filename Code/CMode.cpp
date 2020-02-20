@@ -1,6 +1,8 @@
 #include "CMode.h" 
 
-CMode::CMode(/* args */)
+CMode::CMode()
+: m_selectedColour(END_OF_COLOURS)
+, m_selectedShape(END_OF_SHAPES)
 {
 }
 

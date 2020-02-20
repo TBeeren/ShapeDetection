@@ -10,7 +10,6 @@ SET(SOURCES
     main.cpp
     CShape.cpp
     CViewWindow.cpp
-    CTrackBar.cpp
     CParser.cpp
     CMode.cpp
     CInteractiveMode.cpp

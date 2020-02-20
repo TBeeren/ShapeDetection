@@ -74,8 +74,15 @@ void CInteractiveMode::Execute()
         for(std::vector<cv::Point>& shape : filteredContours)
         {
             DrawShape(source, shape);
+            SetLabel(source, configuredShapes.at(m_selectedShape), featureDetection->FindCenter(shape));
+            std::cout<<"###################################################" << std::endl;
+            std::cout<<"Shape: " << configuredShapes.at(m_selectedShape) << std::endl;
+            std::cout<< "Colour: " << configuredColours.at(m_selectedColour) << std::endl;
+            std::cout<< "At: " << featureDetection->FindCenter(shape) << std::endl;
+            std::cout<< "Surface area: " << featureDetection->CalcSurfaceArea(shape) << std::endl;
         }
 
+        cv::imshow("webcam window", source);
         if( cv::waitKey(10) == 110 )
         {
             Init(); // stop capturing by pressing n and enter a new shape and colour
@@ -88,17 +95,27 @@ void CInteractiveMode::Execute()
     }
 }
 
-void CInteractiveMode::DrawShape(cv::Mat source, std::vector<cv::Point>& rPoints)
+void CInteractiveMode::DrawShape(cv::Mat& rSource, std::vector<cv::Point>& rPoints)
 {
     cv::Point prevPoint = rPoints[0];
     CColour colour(m_selectedColour);
 
     for(int i = 1; i < rPoints.size(); ++i)
     {
-        cv::line(source, prevPoint, rPoints[i], colour.getRgbColour(), 2);
+        cv::line(rSource, prevPoint, rPoints[i], colour.getRgbColour(), 2);
         prevPoint = rPoints[i];
     }
-    cv::line(source, rPoints[rPoints.size()-1] ,rPoints[0], colour.getRgbColour(), 2);
+    cv::line(rSource, rPoints[rPoints.size()-1] ,rPoints[0], colour.getRgbColour(), 2);
+}
 
-    cv::imshow("webcam window", source);
+void CInteractiveMode::SetLabel(cv::Mat& rSource, const std::string& rLabel , const cv::Point& rCentre)
+{
+    int fontface = cv::FONT_HERSHEY_SIMPLEX;
+    double scale = 0.4;
+    int thickness = 1;
+    int baseline = 0;
+ 
+    cv::Size text = cv::getTextSize(rLabel, fontface, scale, thickness, &baseline);
+    cv::Point offsetCentre(rCentre.x - (text.width/2), rCentre.y);
+    cv::putText(rSource, rLabel, offsetCentre, fontface, scale, CV_RGB(0,0,0), thickness, 8);
 }

@@ -22,7 +22,7 @@ class CCalibration
 {
 public:
     CCalibration();
-    ~CCalibration();
+    virtual ~CCalibration();
 
     /**
      * @brief Initialises threshhold values for each colour

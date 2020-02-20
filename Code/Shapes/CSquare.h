@@ -18,7 +18,7 @@ class CSquare: public CShape
 {
 public:
     CSquare();
-    ~CSquare();
+    virtual ~CSquare();
 
     bool Process(std::vector<cv::Point> contour);
 private:

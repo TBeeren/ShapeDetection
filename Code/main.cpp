@@ -26,7 +26,6 @@ int main(int argc, char **argv)
         if (spCommandMode->Init())
         {
             spCommandMode->SetFileLogEnabled(true);
-            spCommandMode->StartProcess();
             spCommandMode->Execute();
         }
     }

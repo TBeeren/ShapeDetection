@@ -57,7 +57,9 @@ private:
      * @param source, source of the webcam window.
      * @param points, vector with coordinates of a shape.
      */
-    void DrawShape(cv::Mat source, std::vector<cv::Point>& rPoints);
+    void DrawShape(cv::Mat& rSource, std::vector<cv::Point>& rPoints);
+
+    void SetLabel(cv::Mat& rSource, const std::string& rLabel , const cv::Point& rCentre);
 
     std::shared_ptr<CViewWindow> m_spViewWindow;
 };

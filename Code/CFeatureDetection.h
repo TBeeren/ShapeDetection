@@ -21,7 +21,7 @@ class CFeatureDetection
 {
 public:
     CFeatureDetection();
-    ~CFeatureDetection();
+    virtual ~CFeatureDetection();
 
     /**
      * @brief Set the Shape object the set shape will be used as a strategy to process incoming contours.

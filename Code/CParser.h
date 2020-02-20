@@ -23,7 +23,7 @@ class CParser
 {
 public:
     CParser(eShapes rSelectedShape, eColours rSelectedColour, CCommandMode* pCommandMode);
-    ~CParser();
+    virtual ~CParser();
 
     /**
      * @brief Parses all commands from an input file and translates

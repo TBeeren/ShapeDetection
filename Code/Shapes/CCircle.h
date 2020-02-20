@@ -18,7 +18,7 @@ class CCircle: public CShape
 {
 public:
     CCircle();
-    ~CCircle();
+    virtual ~CCircle();
     
     bool Process(std::vector<cv::Point> contour);
 private:

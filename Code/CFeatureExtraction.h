@@ -25,7 +25,7 @@ class CFeatureExtraction
 {
 public:
     CFeatureExtraction();
-    ~CFeatureExtraction();
+    virtual ~CFeatureExtraction();
 
     /**
      * @brief Initialise the CFeatureExtraction. Mostly meaning that the colours get calibrated

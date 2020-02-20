@@ -2,15 +2,15 @@
 
 //CViewWindow::CViewWindow(std::string windowName,std::shared_ptr<eShapes> spShape, std::shared_ptr<eColours> spColour )
 
-CViewWindow::CViewWindow(std::string windowName, cv::Mat src) 
-    :m_windowName(windowName), m_src(src)
+CViewWindow::CViewWindow(const std::string& rWindowName, cv::Mat src) 
+    :m_windowName(rWindowName), m_src(src)
 {
     cv::namedWindow(m_windowName, cv::WINDOW_NORMAL);
     cv::imshow(m_windowName, m_src);
 }
 
-CViewWindow::CViewWindow(std::string windowName) 
-    : m_windowName(windowName)
+CViewWindow::CViewWindow(const std::string& rWindowName) 
+    : m_windowName(rWindowName)
     , m_spVideoCapture(std::make_shared<cv::VideoCapture>())
 {
     if(!m_spVideoCapture->open(0))

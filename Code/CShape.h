@@ -19,7 +19,7 @@ class CShape
 {
 public:
     CShape();
-    ~CShape();
+    virtual ~CShape();
 
     /**
      * @brief the function that should be called to match this "shape" to a contour
