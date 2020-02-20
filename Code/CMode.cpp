@@ -59,3 +59,25 @@ eShapes CMode::StringToShape(const std::string& shapeString)
         }
     }
 }
+
+const std::string& CMode::ColourToString(eColours eColour)
+{
+    for (const std::pair<const eColours, std::__cxx11::string>& rColours : configuredColours)
+    {
+        if (rColours.first == eColour)
+        {
+            return rColours.second;
+        }
+    }
+}
+
+const std::string& CMode::ShapeToString(eShapes eShape)
+{
+    for (const std::pair<const eShapes, std::__cxx11::string>& rShape : configuredShapes)
+    {
+        if (rShape.first == eShape)
+        {
+            return rShape.second;
+        }
+    }
+}
