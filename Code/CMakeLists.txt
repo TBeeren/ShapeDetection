@@ -8,7 +8,7 @@ find_package( OpenCV REQUIRED )
 
 SET(SOURCES
     main.cpp
-    IShape.cpp
+    CShape.cpp
     CViewWindow.cpp
     CTrackBar.cpp
     CParser.cpp
@@ -17,6 +17,7 @@ SET(SOURCES
     CCommandMode.cpp
     CColour.cpp
     CFeatureExtraction.cpp
+    CFeatureDetection.cpp
     CCalibration.cpp
     Shapes/CCircle.cpp
     Shapes/CHalfCircle.cpp
@@ -24,7 +25,7 @@ SET(SOURCES
     Shapes/CTriangle.cpp
 )
 SET(HEADERS
-    IShape.h
+    CShape.h
     ESelections.h
     CViewWindow.h
     CTrackBar.h
@@ -34,6 +35,7 @@ SET(HEADERS
     CCommandMode.h
     CColour.h
     CFeatureExtraction.h
+    CFeatureDetection.h
     CCalibration.h
     Shapes/CCircle.h
     Shapes/CHalfCircle.h

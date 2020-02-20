@@ -12,6 +12,7 @@
 
 #include "CCommandMode.h"
 #include "CFeatureExtraction.h"
+#include "CFeatureDetection.h"
 
 #include "CMode.h"
 #include "CParser.h"
@@ -59,6 +60,7 @@ void CCommandMode::Execute()
   {
     m_spParser->ParseFile(m_inputFile);
     std::shared_ptr<CFeatureExtraction> featureExtraction = std::make_shared<CFeatureExtraction>();
+    std::shared_ptr<CFeatureDetection> featureDetection = std::make_shared<CFeatureDetection>();
     featureExtraction->Init(false);
     std::vector<std::vector<cv::Point>> extractedCorners;
     cv::Mat source;
@@ -66,8 +68,10 @@ void CCommandMode::Execute()
     while(!m_extractionQueue.empty())
     {
       source = cv::imread(m_bashArguments[2]);
+      featureDetection->SetShape(m_extractionQueue.front().first);
       extractedCorners = featureExtraction->GetCornerPoints(source, m_extractionQueue.front().second);
     //TODO FEATREdetection
+      featureDetection->ShapeFilter(extractedCorners);
     //TODO write to file
       m_extractionQueue.pop();
     }

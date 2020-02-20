@@ -1,9 +1,9 @@
 /**
- * @file CColour.h
- * @author Tim Beeren (T.Beeren@student.han.nl) Stijn Krabbenborg (S.Krabbenborg@student.han.nl) Evren Kilic (ET.Kilic@student.han.nl)
- * @brief 
+ * @file CTriangle.h
+ * @author Evren Kilic (ET.Kilic@student.han.nl)
+ * @brief CTriangle is the derived class from CShape, it required the functions and members of a shape.
  * @version 0.1
- * @date 07-02-2020
+ * @date 20-02-2020
  * 
  * @copyright Copyright (c) 2020
  * 
@@ -12,13 +12,17 @@
 #ifndef CTRIANGLE_H
 #define CTRIANGLE_H
 
-class CTriangle
+#include "../CShape.h"
+
+class CTriangle: public CShape
 {
 public:
-    CTriangle(/* args */);
+    CTriangle();
     ~CTriangle();
+
+    bool Process(std::vector<cv::Point> contour);
 private:
-    /* data */
+    
 };
 
 #endif /*CTRIANGLE_H*/

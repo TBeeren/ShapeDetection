@@ -17,7 +17,7 @@ namespace
 
     constexpr const int16_t MIN_SHAPE_SIZE = 200;
 
-    constexpr const double EDGE_APPROX_FACTOR = 0.09;
+    constexpr const double EDGE_APPROX_FACTOR = 0.02; //was 0.09
 }
 
 CFeatureExtraction::CFeatureExtraction()
@@ -44,15 +44,16 @@ std::vector<std::vector<cv::Point>> CFeatureExtraction::GetCornerPoints(const cv
     return returnVector;
 }
 
-cv::Mat CFeatureExtraction::ExtractColours(const cv::Mat &input, eColours colour)
+cv::Mat CFeatureExtraction::ExtractColours(const cv::Mat& rInput, eColours colour)
 {
     cv::Mat hsv, output, biFilter;
     m_spLookupColour = m_spCalibration->GetColour(colour);
+
     for (int i = 0; i < BILATERFILTER_ITERATIONS; ++i)
     {
-        cv::bilateralFilter(input, biFilter, BILATERFILTER_KERNEL, BILATERFILTER_SIGMA_COLOUR, BILATERFILTER_SIGMA_SPACE);
+        cv::bilateralFilter(rInput, biFilter, BILATERFILTER_KERNEL, BILATERFILTER_SIGMA_COLOUR, BILATERFILTER_SIGMA_SPACE);
     }
-    cv::cvtColor(input, hsv, cv::COLOR_RGB2HSV);
+    cv::cvtColor(rInput, hsv, cv::COLOR_RGB2HSV);
     cv::inRange(hsv, m_spLookupColour->GetLowerLimit(), m_spLookupColour->GetUpperLimit(), output);
     return output;
 }

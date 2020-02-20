@@ -1,9 +1,9 @@
 /**
- * @file CColour.h
- * @author Tim Beeren (T.Beeren@student.han.nl) Stijn Krabbenborg (S.Krabbenborg@student.han.nl) Evren Kilic (ET.Kilic@student.han.nl)
- * @brief 
+ * @file CSquare.h
+ * @author Evren Kilic (ET.Kilic@student.han.nl)
+ * @brief CSquare is the derived class from CShape, it required the functions and members of a shape.
  * @version 0.1
- * @date 07-02-2020
+ * @date 20-02-2020
  * 
  * @copyright Copyright (c) 2020
  * 
@@ -12,13 +12,17 @@
 #ifndef CSQUARE_H
 #define CSQUARE_H
 
-class CSquare
+#include "../CShape.h"
+
+class CSquare: public CShape
 {
 public:
-    CSquare(/* args */);
+    CSquare();
     ~CSquare();
+
+    bool Process(std::vector<cv::Point> contour);
 private:
-    /* data */
+    
 };
 
 #endif /*CSQUARE_H*/

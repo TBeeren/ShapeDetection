@@ -1,7 +1,7 @@
 /**
- * @file CColour.h
+ * @file CCircle.h
  * @author Tim Beeren (T.Beeren@student.han.nl) Stijn Krabbenborg (S.Krabbenborg@student.han.nl) Evren Kilic (ET.Kilic@student.han.nl)
- * @brief 
+ * @brief CCircle is the derived class from CShape, it required the functions and members of a shape.
  * @version 0.1
  * @date 07-02-2020
  * 
@@ -12,11 +12,15 @@
 #ifndef CCIRCLE_H
 #define CCIRCLE_H
 
-class CCircle
+#include "../CShape.h"
+
+class CCircle: public CShape
 {
 public:
-    CCircle(/* args */);
+    CCircle();
     ~CCircle();
+    
+    bool Process(std::vector<cv::Point> contour);
 private:
     /* data */
 };
