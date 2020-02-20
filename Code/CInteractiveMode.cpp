@@ -85,7 +85,6 @@ void CInteractiveMode::Execute()
 void CInteractiveMode::DrawShape(cv::Mat source, std::vector<cv::Point>& rPoints)
 {
     cv::Point prevPoint = rPoints[0];
-    std::cout << "Colour: " << m_selectedColour << std::endl;
     CColour colour(m_selectedColour);
 
     for(int i = 1; i < rPoints.size(); ++i)
