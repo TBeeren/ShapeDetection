@@ -11,10 +11,11 @@
  */
 
 #include "CCommandMode.h"
-#include "CFeatureExtraction.h"
 
+#include "CFeatureExtraction.h"
 #include "CMode.h"
 #include "CParser.h"
+#include <fstream>
 
 //Define an message with the triggered assert.
 #define assertm(exp, msg) assert(((void)msg, exp))
@@ -24,6 +25,8 @@ CCommandMode::CCommandMode(char** argv)
 , m_bashArguments(argv)
 , m_running(false)
 , m_spParser(std::make_unique<CParser>(m_selectedShape, m_selectedColour, this))
+, m_outputFile("output.txt",std::ofstream::binary)
+, m_fileLogEnabled(false)
 {
 }
 
@@ -66,17 +69,62 @@ void CCommandMode::Execute()
     while(!m_extractionQueue.empty())
     {
       source = cv::imread(m_bashArguments[2]);
+      std::string shape = ShapeToString(m_extractionQueue.front().first);
+      std::string colour = ColourToString(m_extractionQueue.front().second);
+
+      std::cout << "-----------------------------------------------------------------" << std::endl;
+      std::cout << "Shape: " << shape << std::endl;
+      std::cout << "Colour: " << colour << std::endl;
       extractedCorners = featureExtraction->GetCornerPoints(source, m_extractionQueue.front().second);
-    //TODO FEATREdetection
-    //TODO write to file
+      //ProcessOutput(featureDetection->Detect(extractedCorners));
+      if(m_fileLogEnabled)
+      {
+          Log("----------------------------------------------------------------");
+          Log("Shape: ", shape);
+          Log("Colour: ", colour);
+      }
+      ProcessOutput(4, cv::Point(6,2));
       m_extractionQueue.pop();
     }
-    
+    m_outputFile.close();
   }
   else
   {
     std::cout << "[Warning] -> Test is not running. Please start the test first" << std::endl;
   }
+}
+
+void CCommandMode::ProcessOutput(uint64_t surfaceArea, const cv::Point& centerPoint)
+{
+  std::string pointValues = "(" + std::to_string(centerPoint.x) + "," + std::to_string(centerPoint.y) + ")";
+  std::cout << "Shape detected at: " << pointValues << std::endl;
+  std::cout << "Surface area: " << surfaceArea << std::endl;
+  
+  if(m_fileLogEnabled)
+  {
+    Log("Shape detected at", pointValues);
+    Log("The Surface area is", std::to_string(surfaceArea));
+  }
+}
+
+void CCommandMode::Log(const std::string& rDescription)
+{
+  std::string message = rDescription + "\n"; 
+  char logMessage[message.length()];
+  strcpy(logMessage, message.c_str());
+
+  m_outputFile.write(logMessage, sizeof(logMessage));
+  m_outputFile.flush();
+}
+
+void CCommandMode::Log(const std::string& rDescription, const std::string& rPerspects)
+{
+  std::string message = rDescription + ": " + rPerspects + "\n"; 
+  char logMessage[message.length()];
+  strcpy(logMessage, message.c_str());
+
+  m_outputFile.write(logMessage, sizeof(logMessage));
+  m_outputFile.flush();
 }
 
 bool CCommandMode::IsProcessRunning() const
@@ -90,4 +138,9 @@ void CCommandMode::AddToQueue(std::string shape, std::string colour)
     {
         m_extractionQueue.push(std::make_pair<eShapes, eColours>(StringToShape(shape), StringToColour(colour)));
     }
+}
+
+void CCommandMode::SetFileLogEnabled(bool state)
+{
+    m_fileLogEnabled = state;
 }
