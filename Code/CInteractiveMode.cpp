@@ -65,7 +65,7 @@ void CInteractiveMode::Execute()
         source = webcamWindow.GetSource();
         extractedCorners = featureExtraction->GetCornerPoints(source, m_selectedColour);
 
-        for(std::vector<cv::Point> shape : extractedCorners)
+        for(std::vector<cv::Point>& shape : extractedCorners)
         {
             DrawShape(source, shape);
         }
@@ -81,17 +81,15 @@ void CInteractiveMode::Execute()
     }
 }
 
-void CInteractiveMode::DrawShape(cv::Mat& source, std::vector<cv::Point>& points)
+void CInteractiveMode::DrawShape(cv::Mat source, std::vector<cv::Point>& rPoints)
 {
-    cv::Mat cpSource = source; 
-
-    cv::Point prevPoint = points[0];
-    for(int i = 1; i < points.size(); ++i)
+    cv::Point prevPoint = rPoints[0];
+    for(int i = 1; i < rPoints.size(); ++i)
     {
-        cv::line(cpSource, prevPoint, points[i], EnumToColour(m_selectedColour), 1);
-        prevPoint = points[i];
+        cv::line(source, prevPoint, rPoints[i], EnumToColour(m_selectedColour), 2);
+        prevPoint = rPoints[i];
     }
-    cv::line(cpSource, points[points.size()-1] ,points[0], EnumToColour(m_selectedColour), 1);
+    cv::line(source, rPoints[rPoints.size()-1] ,rPoints[0], EnumToColour(m_selectedColour), 2);
 
-    cv::imshow("webcam window", cpSource);
+    cv::imshow("webcam window", source);
 }

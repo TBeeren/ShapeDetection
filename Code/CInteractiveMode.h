@@ -55,9 +55,9 @@ private:
      * @brief Draws a shape in the window based on the coordinates of the vector extractedCorners.
      * 
      * @param source, source of the webcam window.
-     * @param points, vecotr with coordinates of a shape.
+     * @param points, vector with coordinates of a shape.
      */
-    void DrawShape(cv::Mat& source, std::vector<cv::Point>& points);
+    void DrawShape(cv::Mat source, std::vector<cv::Point>& rPoints);
 
     std::shared_ptr<CViewWindow> m_spViewWindow;
 };
