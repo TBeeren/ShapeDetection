@@ -31,13 +31,13 @@ public:
      * @return true, if the shape and color is correct, proceed.
      * @return false, if the shape and color is not correct, try again.
      */
-    bool Init();
+    bool Init() override;
 
     /**
      * @brief Executes the program
      * 
      */
-    void Execute();
+    void Execute() override;
 
 private:
     std::shared_ptr<CViewWindow> m_spViewWindow;

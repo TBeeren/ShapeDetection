@@ -18,6 +18,7 @@
 #include <fstream>
 #include <cassert>
 #include <queue>
+#include "opencv2/opencv.hpp"
 
 //Forward Declarations
 class CParser;
@@ -41,6 +42,14 @@ public:
      * 
      */
     void Execute() override;
+
+    /**
+     * @brief Prints the output values to a file or terminal (or both).
+     * 
+     * @param surfaceArea, Calculated surface area from the detected shape
+     * @param rCenterPoint, Calculated centerpoint from the detected shape
+     */
+    void ProcessOutput(uint64_t surfaceArea, const cv::Point& centerPoint);
     
     /**
      * @brief Start the execution process of the batch file. This functionality 
@@ -64,11 +73,42 @@ public:
      */
     bool IsProcessRunning() const;
 
+    /**
+     * @brief Add task to the queue, to schedule a new task. The used algorithm is FIFO.
+     * 
+     * @param shape, string of the shape to detect.
+     * @param colour, string of the colour to detect.
+     */
     void AddToQueue(std::string shape, std::string colour);
+
+    /**
+     * @brief Logger with only a description string. The logger will print this line to an outputfile. 
+     * 
+     * @param rDescription, String description, provided by the user..
+     */
+    void Log(const std::string& rDescription);
+
+    /**
+     * @brief Logger with a description and perspects. The logger will print this line to an outputfile. 
+     * 
+     * @param rDescription, String description, provided by the user.
+     * @param rPerspects, Perspects from the system, required from stimuli. 
+     */
+    void Log(const std::string& rDescription, const std::string& rPerspects);
+
+    /**
+     * @brief Set the File Log Enabled object
+     * 
+     * @param state, The user is able to enable or disable the logging to an outputfile. 
+     */
+    void SetFileLogEnabled(bool state);
+
 
 private:
     std::queue<std::pair<eShapes, eColours>> m_extractionQueue;
+    bool m_fileLogEnabled;
     std::ifstream m_inputFile;
+    std::ofstream m_outputFile;
     char** m_bashArguments;
     bool m_running;
     std::shared_ptr<CParser> m_spParser;
