@@ -16,13 +16,24 @@
 #include "CMode.h"
 #include "ESelections.h"
 
+#include "opencv2/imgcodecs.hpp"
+
 //Forward Declarations
 class CViewWindow;
 
 class CInteractiveMode : public CMode
 {
 public:
+    /**
+     * @brief Construct a new CInteractiveMode object
+     * 
+     */
     CInteractiveMode();
+
+    /**
+     * @brief Destroy the CInteractiveMode object
+     * 
+     */
     virtual ~CInteractiveMode();
 
     /**
@@ -40,10 +51,15 @@ public:
     void Execute() override;
 
 private:
-    std::shared_ptr<CViewWindow> m_spViewWindow;
+    /**
+     * @brief Draws a shape in the window based on the coordinates of the vector extractedCorners.
+     * 
+     * @param source, source of the webcam window.
+     * @param points, vector with coordinates of a shape.
+     */
+    void DrawShape(cv::Mat source, std::vector<cv::Point>& rPoints);
 
-    enum eShapes m_shape;
-    enum eColours m_colour;
+    std::shared_ptr<CViewWindow> m_spViewWindow;
 };
 
 #endif /*CINTERACTIVEMODE_H*/

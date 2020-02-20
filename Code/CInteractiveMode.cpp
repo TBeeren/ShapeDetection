@@ -13,10 +13,12 @@
 #include "CInteractiveMode.h"
 #include "CViewWindow.h"
 #include "CFeatureExtraction.h"
+#include "CColour.h"
 
 #include <iostream>
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
+#include "opencv2/imgproc.hpp"
 
 CInteractiveMode::CInteractiveMode()
 {
@@ -43,6 +45,7 @@ bool CInteractiveMode::Init()
 
         if(IsConfiguredAsColour(colour))
         {
+            std::cout << "Detecting shape..." << std::endl;
             return true;
         }
     }
@@ -52,9 +55,8 @@ bool CInteractiveMode::Init()
 
 void CInteractiveMode::Execute()
 {
-    //CViewWindow sourceWindow("src window", cv::imread( cv::samples::findFile("../../img/colored_blocks.jpg")));
     std::shared_ptr<CFeatureExtraction> featureExtraction = std::make_shared<CFeatureExtraction>();
-    featureExtraction->Init(false);
+    featureExtraction->Init(true);
     CViewWindow webcamWindow("webcam window");
     cv::Mat source;
     std::vector<std::vector<cv::Point>> extractedCorners;
@@ -62,16 +64,35 @@ void CInteractiveMode::Execute()
     {
         webcamWindow.UpdateSource();
         source = webcamWindow.GetSource();
-        extractedCorners = featureExtraction->GetCornerPoints(source, m_colour);
-        //TODO: call for feature detection
+        extractedCorners = featureExtraction->GetCornerPoints(source, m_selectedColour);
+
+        for(std::vector<cv::Point>& shape : extractedCorners)
+        {
+            DrawShape(source, shape);
+        }
+
         if( cv::waitKey(10) == 110 )
         {
-            Init(); // stop capturing by pressing ESC 
+            Init(); // stop capturing by pressing n and enter a new shape and colour
         }
         if( cv::waitKey(30) == 27 )
         {
             break; // stop capturing by pressing ESC 
         }
     }
+}
 
+void CInteractiveMode::DrawShape(cv::Mat source, std::vector<cv::Point>& rPoints)
+{
+    cv::Point prevPoint = rPoints[0];
+    CColour colour(m_selectedColour);
+
+    for(int i = 1; i < rPoints.size(); ++i)
+    {
+        cv::line(source, prevPoint, rPoints[i], colour.getRgbColour(), 2);
+        prevPoint = rPoints[i];
+    }
+    cv::line(source, rPoints[rPoints.size()-1] ,rPoints[0], colour.getRgbColour(), 2);
+
+    cv::imshow("webcam window", source);
 }

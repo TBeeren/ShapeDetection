@@ -25,10 +25,18 @@ public:
     const eColours GetColour() const;
     const cv::Scalar& GetLowerLimit() const;
     const cv::Scalar& GetUpperLimit() const;
+
+    /**
+     * @brief Get the Rgb Colour object
+     * 
+     * @return const cv::Scalar& 
+     */
+    const cv::Scalar& getRgbColour() const;
 private:
     eColours m_colour;
     cv::Scalar m_lowerLimit;
     cv::Scalar m_upperLimit;
+    cv::Scalar m_rgbColour;
 };
 
 #endif /*CCOLOUR_H*/
