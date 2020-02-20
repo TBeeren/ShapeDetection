@@ -17,6 +17,8 @@
 
 #include "ESelections.h" 
 
+#include "opencv2/imgcodecs.hpp"
+
 //Forward declarations
 class CFeatureExtraction;
 class CFeatureDetection;
@@ -60,14 +62,48 @@ protected:
      */
     bool IsConfiguredAsShape(const std::string& shapeArgument);
 
-
+    /**
+     * @brief Converts a string to an enum.
+     * 
+     * @param colourString, the colour input string of the user.
+     * @return eColours, returns the enum. 
+     */
     eColours StringToColour(const std::string& colourString);
-    eShapes StringToShape(const std::string& shapeString);
 
+    /**
+     * @brief Converts a string to an enum.
+     * 
+     * @param shapeString, the shape input string of the user.
+     * @return eShapes, returns the enum.
+     */
+    eShapes StringToShape(const std::string& shapeString);
+    
+    /**
+     * @brief 
+     * 
+     * @param eColour 
+     * @return const std::string& 
+     */
     const std::string& ColourToString(eColours eColour);
+
+    /**
+     * @brief 
+     * 
+     * @param eShape 
+     * @return const std::string& 
+     */
     const std::string& ShapeToString(eShapes eShape);
 
+    /**
+     * @brief Is the shape that will be detected.
+     * 
+     */
     eShapes m_selectedShape;
+
+    /**
+     * @brief Is the colour that will be detected.
+     * 
+     */
     eColours m_selectedColour;
 
 private:

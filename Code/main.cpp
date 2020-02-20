@@ -1,5 +1,5 @@
 /**
- * @file CColour.h
+ * @file main.cpp
  * @author Tim Beeren (T.Beeren@student.han.nl) Stijn Krabbenborg (S.Krabbenborg@student.han.nl) Evren Kilic (ET.Kilic@student.han.nl)
  * @brief 
  * @version 0.1
@@ -43,9 +43,6 @@ int main(int argc, char **argv)
     {
         std::cout << "Please enter a maximum of 2 arguments" << std::endl;
     }
-
-    // Feature -> Calibration mode
-    // @brief: Enter Calibrarion window
 
     return 0;
 }
