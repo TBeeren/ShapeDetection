@@ -3,4 +3,4 @@ Shape: : TRIANGLE
 Colour: : RED
 Shape detected at: (622,739)
 The Surface area is: 79535
-Operation time: 1511269
+Operation time: 1486747

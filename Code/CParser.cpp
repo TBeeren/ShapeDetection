@@ -15,15 +15,15 @@
 #include "ESelections.h"
 #include <iostream>
 #include <fstream>
+#include <memory>
 
-CParser::CParser(eShapes rSelectedShape, eColours rSelectedColour, CCommandMode* pCommandMode)
+CParser::CParser(eShapes rSelectedShape, eColours rSelectedColour, std::shared_ptr<CCommandMode> pCommandMode)
     : m_rSelectedShape(rSelectedShape), m_rSelectedColour(rSelectedColour), m_pCommandMode(pCommandMode)
 {
 }
 
 CParser::~CParser()
 {
-    delete m_pCommandMode;
 }
 
 void CParser::ParseFile(std::ifstream &rFilename)

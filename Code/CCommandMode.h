@@ -20,13 +20,16 @@
 #include <queue>
 #include "opencv2/opencv.hpp"
 
-//Forward Declarations
-class CParser;
+#include <boost/enable_shared_from_this.hpp>
+#include <boost/shared_ptr.hpp>
 
-class CCommandMode : public CMode
+//Forward Declarations
+class CParser;  
+
+class CCommandMode : public CMode, public std::enable_shared_from_this<CCommandMode>
 {
 public:
-    explicit CCommandMode(char** argv);
+    explicit CCommandMode(std::vector<std::string> bashArguments);
     virtual ~CCommandMode();
 
     /**
@@ -87,7 +90,7 @@ private:
     bool m_fileLogEnabled;
     std::ifstream m_inputFile;
     std::ofstream m_outputFile;
-    char** m_bashArguments;
+    std::vector<std::string> m_bashArguments;
     bool m_running;
     std::shared_ptr<CParser> m_spParser;
 };

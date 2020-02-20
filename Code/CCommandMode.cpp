@@ -22,11 +22,10 @@
 //Define an message with the triggered assert.
 #define assertm(exp, msg) assert(((void)msg, exp))
 
-CCommandMode::CCommandMode(char** argv)
+CCommandMode::CCommandMode(std::vector<std::string> bashArguments)
 : CMode()
-, m_bashArguments(argv)
+, m_bashArguments(bashArguments)
 , m_running(false)
-, m_spParser(std::make_unique<CParser>(m_selectedShape, m_selectedColour, this))
 , m_outputFile("output.txt",std::ofstream::binary)
 , m_fileLogEnabled(false)
 {
@@ -38,7 +37,8 @@ CCommandMode::~CCommandMode()
 
 bool CCommandMode::Init()
 {
-  m_inputFile.open(m_bashArguments[1]); 
+  m_spParser = std::make_unique<CParser>(m_selectedShape, m_selectedColour, shared_from_this());
+  m_inputFile.open(m_bashArguments.at(1)); 
 
   if(m_inputFile.fail())
   {
@@ -59,7 +59,7 @@ void CCommandMode::Execute()
   cv::Mat source;
   while(!m_extractionQueue.empty())
   {
-    source = cv::imread(m_bashArguments[2]);
+    source = cv::imread(m_bashArguments.at(2));
     std::string shape = ShapeToString(m_extractionQueue.front().first);
     std::string colour = ColourToString(m_extractionQueue.front().second);
     std::cout << "-----------------------------------------------------------------" << std::endl;

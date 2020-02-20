@@ -17,12 +17,13 @@
 #include <memory>
 #include <queue>
 #include <utility>
+#include <boost/shared_ptr.hpp>
 
 class CCommandMode;
 class CParser
 {
 public:
-    CParser(eShapes rSelectedShape, eColours rSelectedColour, CCommandMode* pCommandMode);
+    CParser(eShapes rSelectedShape, eColours rSelectedColour, std::shared_ptr<CCommandMode> pCommandMode);
     virtual ~CParser();
 
     /**
@@ -37,7 +38,7 @@ private:
     eColours StringToColour(const std::string& colourString);
     eShapes StringToShape(const std::string& shapeString);
 
-    CCommandMode* m_pCommandMode;
+    std::shared_ptr<CCommandMode> m_pCommandMode;
 
     eShapes& m_rSelectedShape;
     eColours& m_rSelectedColour;

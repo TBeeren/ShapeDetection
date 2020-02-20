@@ -42,9 +42,8 @@ SET(HEADERS
     Shapes/CTriangle.h
 )
 
-add_executable(ShapeDetection ${SOURCES} ${HEADERS}
-
-)
+add_executable(ShapeDetection ${SOURCES} ${HEADERS})
+add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY)
 
 target_link_libraries( ShapeDetection ${OpenCV_LIBS} )
 
