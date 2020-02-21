@@ -22,7 +22,7 @@ public:
     explicit CColour(eColours colour, cv::Scalar lowerRange, cv::Scalar upperRange);
     virtual ~CColour();
 
-    const eColours GetColour() const;
+    eColours GetColour() const;
     const cv::Scalar& GetLowerLimit() const;
     const cv::Scalar& GetUpperLimit() const;
 

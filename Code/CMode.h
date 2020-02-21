@@ -84,7 +84,7 @@ protected:
      * @param eColour 
      * @return const std::string& 
      */
-    const std::string& ColourToString(eColours eColour);
+    const std::string ColourToString(eColours eColour);
 
     /**
      * @brief 
@@ -92,13 +92,8 @@ protected:
      * @param eShape 
      * @return const std::string& 
      */
-    const std::string& ShapeToString(eShapes eShape);
+    const std::string ShapeToString(eShapes eShape);
 
-    /**
-     * @brief Is the shape that will be detected.
-     * 
-     */
-    eShapes m_selectedShape;
 
     /**
      * @brief Is the colour that will be detected.
@@ -106,6 +101,11 @@ protected:
      */
     eColours m_selectedColour;
 
+    /**
+     * @brief Is the shape that will be detected.
+     * 
+     */
+    eShapes m_selectedShape;
 private:
     std::shared_ptr<CFeatureExtraction> m_spFeatureExtraction;
     std::shared_ptr<CFeatureDetection> m_spFeatureDetection;

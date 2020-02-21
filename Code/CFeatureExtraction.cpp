@@ -31,7 +31,7 @@ CFeatureExtraction::~CFeatureExtraction()
 
 bool CFeatureExtraction::Init(bool userCalibration)
 {
-    m_spCalibration->InitColours(userCalibration);
+    return m_spCalibration->InitColours(userCalibration);
 }
 
 std::vector<std::vector<cv::Point>> CFeatureExtraction::GetCornerPoints(const cv::Mat& source, eColours colour)
@@ -73,7 +73,7 @@ std::vector<std::vector<cv::Point>> CFeatureExtraction::ExtractContours(const cv
     std::vector<cv::Point> approx;                      //temporarily stores contour corner points
     cv::findContours(input, allContours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
 
-    for (int i = 0; i < allContours.size(); ++i)
+    for (uint64_t i = 0; i < allContours.size(); ++i)
     {
         if (std::fabs(cv::contourArea(allContours[i])) > MIN_SHAPE_SIZE)
         {

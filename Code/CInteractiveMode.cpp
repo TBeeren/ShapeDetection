@@ -58,7 +58,7 @@ void CInteractiveMode::Execute()
 {
     std::shared_ptr<CFeatureExtraction> featureExtraction = std::make_shared<CFeatureExtraction>();
     std::shared_ptr<CFeatureDetection> featureDetection = std::make_shared<CFeatureDetection>();
-    featureExtraction->Init(false);
+    featureExtraction->Init(true);
     featureDetection->SetShape(m_selectedShape);
     CViewWindow webcamWindow("webcam window");
     cv::Mat source;
@@ -100,7 +100,7 @@ void CInteractiveMode::DrawShape(cv::Mat& rSource, std::vector<cv::Point>& rPoin
     cv::Point prevPoint = rPoints[0];
     CColour colour(m_selectedColour);
 
-    for(int i = 1; i < rPoints.size(); ++i)
+    for(uint64_t i = 1; i < rPoints.size(); ++i)
     {
         cv::line(rSource, prevPoint, rPoints[i], colour.getRgbColour(), 2);
         prevPoint = rPoints[i];

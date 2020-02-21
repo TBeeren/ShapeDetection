@@ -44,6 +44,7 @@ SET(HEADERS
 
 add_executable(ShapeDetection ${SOURCES} ${HEADERS})
 add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY)
+target_compile_options(ShapeDetection PRIVATE -Wall -Wextra)
 
 target_link_libraries( ShapeDetection ${OpenCV_LIBS} )
 

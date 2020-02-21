@@ -29,7 +29,7 @@ class CParser;
 class CCommandMode : public CMode, public std::enable_shared_from_this<CCommandMode>
 {
 public:
-    explicit CCommandMode(std::vector<std::string> bashArguments);
+    explicit CCommandMode(const std::vector<std::string>& bashArguments);
     virtual ~CCommandMode();
 
     /**
@@ -87,12 +87,12 @@ public:
 
 private:
     std::queue<std::pair<eShapes, eColours>> m_extractionQueue;
-    bool m_fileLogEnabled;
-    std::ifstream m_inputFile;
-    std::ofstream m_outputFile;
+    std::shared_ptr<CParser> m_spParser;
     std::vector<std::string> m_bashArguments;
     bool m_running;
-    std::shared_ptr<CParser> m_spParser;
+    std::ofstream m_outputFile;
+    bool m_fileLogEnabled;
+    std::ifstream m_inputFile;
 };
 
 #endif /*CCOMMANDMODE_H*/

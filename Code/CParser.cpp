@@ -17,8 +17,8 @@
 #include <fstream>
 #include <memory>
 
-CParser::CParser(eShapes rSelectedShape, eColours rSelectedColour, std::shared_ptr<CCommandMode> pCommandMode)
-    : m_rSelectedShape(rSelectedShape), m_rSelectedColour(rSelectedColour), m_pCommandMode(pCommandMode)
+CParser::CParser(eShapes rSelectedShape, eColours rSelectedColour, const std::shared_ptr<CCommandMode>& pCommandMode)
+    : m_rSelectedShape(rSelectedShape), m_rSelectedColour(rSelectedColour), m_wpCommandMode(pCommandMode)
 {
 }
 
@@ -37,11 +37,11 @@ void CParser::ParseFile(std::ifstream &rFilename)
 
             if (line[0] != '#' && !line.empty())
             {
-                int whitespacePos = 0;
+                uint64_t whitespacePos = 0;
                 std::string colour = "";
                 std::string shape = "";
 
-                for (int i = 0; i < line.size(); ++i)
+                for (uint64_t i = 0; i < line.size(); ++i)
                 {
                     if (line[i] == ' ')
                     {
@@ -50,17 +50,19 @@ void CParser::ParseFile(std::ifstream &rFilename)
                     }
                 }
 
-                for (int i = 0; i < whitespacePos; ++i)
+                for (uint64_t i = 0; i < whitespacePos; ++i)
                 {
                     shape = shape + line[i];
                 }
 
-                for (int i = whitespacePos + 1; i < line.size(); ++i)
+                for (uint64_t i = whitespacePos + 1; i < line.size(); ++i)
                 {
                     colour = colour + line[i];
                 }
-
-                m_pCommandMode->AddToQueue(shape, colour);
+                if(std::shared_ptr<CCommandMode> spCommandMode = m_wpCommandMode.lock())
+                {
+                    spCommandMode->AddToQueue(shape, colour);
+                }
             }
 
         } while (!rFilename.eof());

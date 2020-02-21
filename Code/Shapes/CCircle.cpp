@@ -22,5 +22,5 @@ CCircle::~CCircle()
 
 bool CCircle::Process(std::vector<cv::Point> corners)
 {
-    return (corners.size() > 4 && cv::isContourConvex(corners) && (!HasElongatedSide(corners)));
+    return (corners.size() > 6 && cv::isContourConvex(corners) && (!HasElongatedSide(corners)));
 }

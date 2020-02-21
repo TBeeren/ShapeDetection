@@ -22,7 +22,7 @@ bool CCalibration::InitColours(bool userCalibration)
     {
         cv::Mat source, hsv, mask;
         cv::VideoCapture cap;
-        if (!cap.open(0))
+        if (!cap.open(2))
         {
             return false;
         }
@@ -89,4 +89,5 @@ std::shared_ptr<CColour> CCalibration::GetColour(eColours colourValue)
             return colour;
         }
     }
+    return m_colourList.at(0);
 }

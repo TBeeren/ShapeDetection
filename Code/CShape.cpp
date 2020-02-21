@@ -28,7 +28,7 @@ float CShape::DistanceBetweenCorners(cv::Point point1, cv::Point point2)
 bool CShape::HasElongatedSide(std::vector<cv::Point> contour)
 {
     std::vector<float> distances;
-    for (int i = 0; i < contour.size() - 1; ++i)
+    for (uint64_t i = 0; i < contour.size() - 1; ++i)
     {
         distances.push_back(DistanceBetweenCorners(contour.at(i), contour.at(i + 1)));
     }

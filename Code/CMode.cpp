@@ -49,6 +49,7 @@ eColours CMode::StringToColour(const std::string& colourString)
             return rColour.first;
         }
     }
+    return eColours::END_OF_COLOURS;
 }
 
 eShapes CMode::StringToShape(const std::string& shapeString)
@@ -60,9 +61,10 @@ eShapes CMode::StringToShape(const std::string& shapeString)
             return rShape.first;
         }
     }
+    return eShapes::END_OF_SHAPES;
 }
 
-const std::string& CMode::ColourToString(eColours eColour)
+const std::string CMode::ColourToString(eColours eColour)
 {
     for (const std::pair<const eColours, std::__cxx11::string>& rColours : configuredColours)
     {
@@ -71,9 +73,10 @@ const std::string& CMode::ColourToString(eColours eColour)
             return rColours.second;
         }
     }
+    return "";
 }
 
-const std::string& CMode::ShapeToString(eShapes eShape)
+const std::string CMode::ShapeToString(eShapes eShape)
 {
     for (const std::pair<const eShapes, std::__cxx11::string>& rShape : configuredShapes)
     {
@@ -82,4 +85,5 @@ const std::string& CMode::ShapeToString(eShapes eShape)
             return rShape.second;
         }
     }
+    return "";
 }

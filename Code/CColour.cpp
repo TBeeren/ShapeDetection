@@ -132,7 +132,7 @@ CColour::~CColour()
 {
 }
 
-const eColours CColour::GetColour() const
+eColours CColour::GetColour() const
 {
     return m_colour;
 }

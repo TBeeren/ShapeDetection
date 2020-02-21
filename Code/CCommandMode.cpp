@@ -22,7 +22,7 @@
 //Define an message with the triggered assert.
 #define assertm(exp, msg) assert(((void)msg, exp))
 
-CCommandMode::CCommandMode(std::vector<std::string> bashArguments)
+CCommandMode::CCommandMode(const std::vector<std::string>& bashArguments)
 : CMode()
 , m_bashArguments(bashArguments)
 , m_running(false)
