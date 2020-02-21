@@ -1,0 +1,12 @@
+Outside class:
+
+Normal variable: name
+referenced rName
+pointer pName
+smartpointer spName
+Class members (+ m_):
+
+smart pointer m_spName
+pointer m_pName
+normal member m_Name
+reference m_rName
