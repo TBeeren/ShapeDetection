@@ -13,7 +13,7 @@ CViewWindow::CViewWindow(const std::string& rWindowName)
     : m_windowName(rWindowName)
     , m_spVideoCapture(std::make_shared<cv::VideoCapture>())
 {
-    if(!m_spVideoCapture->open(2))
+    if(!m_spVideoCapture->open(0))
     {
         std::cout << "Unable to open webcam!!" << std::endl;
     }

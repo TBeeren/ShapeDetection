@@ -17,14 +17,13 @@
 #include <memory>
 #include <queue>
 #include <utility>
-#include <boost/shared_ptr.hpp>
 
 class CCommandMode;
 class CParser
 {
 public:
     CParser(eShapes rSelectedShape, eColours rSelectedColour, const std::shared_ptr<CCommandMode>& pCommandMode);
-    virtual ~CParser();
+    virtual ~CParser() = default;
 
     /**
      * @brief Parses all commands from an input file and translates

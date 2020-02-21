@@ -16,10 +16,6 @@ CHalfCircle::CHalfCircle()
 {
 }
 
-CHalfCircle::~CHalfCircle()
-{
-}
-
 bool CHalfCircle::Process(std::vector<cv::Point> corners)
 {
     return (corners.size() > 4 && cv::isContourConvex(corners) && (HasElongatedSide(corners)));

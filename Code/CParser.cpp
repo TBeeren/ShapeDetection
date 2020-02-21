@@ -17,16 +17,14 @@
 #include <fstream>
 #include <memory>
 
-CParser::CParser(eShapes rSelectedShape, eColours rSelectedColour, const std::shared_ptr<CCommandMode>& pCommandMode)
-    : m_rSelectedShape(rSelectedShape), m_rSelectedColour(rSelectedColour), m_wpCommandMode(pCommandMode)
+CParser::CParser(eShapes rSelectedShape, eColours rSelectedColour, const std::shared_ptr<CCommandMode>& spCommandMode)
+: m_rSelectedShape(rSelectedShape)
+, m_rSelectedColour(rSelectedColour)
+, m_wpCommandMode(spCommandMode)
 {
 }
 
-CParser::~CParser()
-{
-}
-
-void CParser::ParseFile(std::ifstream &rFilename)
+void CParser::ParseFile(std::ifstream& rFilename)
 {
     if (rFilename.is_open())
     {

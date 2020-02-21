@@ -18,7 +18,7 @@ class CHalfCircle: public CShape
 {
 public:
     CHalfCircle();
-    virtual ~CHalfCircle();
+    virtual ~CHalfCircle() = default;
     bool Process(std::vector<cv::Point> contour);
 private:
     

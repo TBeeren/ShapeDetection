@@ -25,7 +25,6 @@
 CCommandMode::CCommandMode(const std::vector<std::string>& bashArguments)
 : CMode()
 , m_bashArguments(bashArguments)
-, m_running(false)
 , m_outputFile("output.txt",std::ofstream::binary)
 , m_fileLogEnabled(false)
 {
@@ -51,49 +50,56 @@ bool CCommandMode::Init()
 void CCommandMode::Execute()
 {
   m_spParser->ParseFile(m_inputFile);
-  std::shared_ptr<CFeatureExtraction> featureExtraction = std::make_shared<CFeatureExtraction>();
-  std::shared_ptr<CFeatureDetection> featureDetection = std::make_shared<CFeatureDetection>();
-  featureExtraction->Init(false);
+
+  std::shared_ptr<CFeatureExtraction> spFeatureExtraction = std::make_shared<CFeatureExtraction>();
+  spFeatureExtraction->Init(false);
+  std::shared_ptr<CFeatureDetection> spFeatureDetection = std::make_shared<CFeatureDetection>();
+
   std::vector<std::vector<cv::Point>> extractedCorners;
   std::vector<std::vector<cv::Point>> extractedShapeContours;
-  cv::Mat source;
+  cv::Mat source = cv::imread(m_bashArguments.at(2));
+
   while(!m_extractionQueue.empty())
   {
-    source = cv::imread(m_bashArguments.at(2));
     std::string shape = ShapeToString(m_extractionQueue.front().first);
     std::string colour = ColourToString(m_extractionQueue.front().second);
+
     std::cout << "-----------------------------------------------------------------" << std::endl;
     std::cout << "Shape: " << shape << std::endl;
     std::cout << "Colour: " << colour << std::endl;
+
     clock_t startTimer = clock();
-    extractedCorners = featureExtraction->GetCornerPoints(source, m_extractionQueue.front().second);
-    featureDetection->SetShape(m_extractionQueue.front().first);
-    extractedShapeContours = featureDetection->ShapeFilter(extractedCorners);
+    extractedCorners = spFeatureExtraction->GetCornerPoints(source, m_extractionQueue.front().second);
+    spFeatureDetection->SetShape(m_extractionQueue.front().first);
+    extractedShapeContours = spFeatureDetection->ShapeFilter(extractedCorners);
     clock_t endTimer = clock();
     long duration = endTimer - startTimer;
+    
     if(m_fileLogEnabled)
     {
         Log("----------------------------------------------------------------");
         Log("Shape: ", shape);
         Log("Colour: ", colour);
     }
+
     if(extractedShapeContours.size())
     {
       for (const std::vector<cv::Point>& shapeContour : extractedShapeContours)
       {
-          ProcessOutput(featureDetection->CalcSurfaceArea(shapeContour), featureDetection->FindCenter(shapeContour), duration);
+          ProcessOutput(spFeatureDetection->CalcSurfaceArea(shapeContour), spFeatureDetection->FindCenter(shapeContour), duration);
       }
+    
     }
     else
     {
       Log("Shape not detected in image");
+      Log("Operation time", std::to_string(duration));
       std::cout << "Shape not detected in image" << std::endl;
       std::cout << "Operation time: " << duration << std::endl;
-      Log("Operation time", std::to_string(duration));
     }
     m_extractionQueue.pop();
-    }
-    m_outputFile.close();
+  }
+  m_outputFile.close();
 }
 
 void CCommandMode::ProcessOutput(uint64_t surfaceArea, const cv::Point& centerPoint, clock_t duration)

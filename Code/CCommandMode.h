@@ -89,7 +89,6 @@ private:
     std::queue<std::pair<eShapes, eColours>> m_extractionQueue;
     std::shared_ptr<CParser> m_spParser;
     std::vector<std::string> m_bashArguments;
-    bool m_running;
     std::ofstream m_outputFile;
     bool m_fileLogEnabled;
     std::ifstream m_inputFile;

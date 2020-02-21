@@ -28,13 +28,13 @@ public:
      * @brief Construct a new CInteractiveMode object
      * 
      */
-    CInteractiveMode();
+    CInteractiveMode() = default;
 
     /**
      * @brief Destroy the CInteractiveMode object
      * 
      */
-    virtual ~CInteractiveMode();
+    virtual ~CInteractiveMode() = default;
 
     /**
      * @brief Initializes the shape and color that the user gives in the commandline

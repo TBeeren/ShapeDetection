@@ -18,8 +18,8 @@
 class CShape
 {
 public:
-    CShape();
-    virtual ~CShape();
+    CShape() = default;
+    virtual ~CShape() = default;
 
     /**
      * @brief the function that should be called to match this "shape" to a contour
@@ -37,7 +37,7 @@ protected:
      * @return true returns true when the shape has an elongated side.
      * @return false returns false when the shade does not have an elongated side.
      */
-    bool HasElongatedSide(std::vector<cv::Point> contour);
+    bool HasElongatedSide(const std::vector<cv::Point>& contour);
 private:
     /**
      * @brief a private function to calculate the distance between two points
@@ -46,7 +46,7 @@ private:
      * @param point2 point B for the calculation
      * @return float the distance between point A and B
      */
-    float DistanceBetweenCorners(cv::Point point1, cv::Point point2);
+    float DistanceBetweenCorners(const cv::Point& point1, const cv::Point& point2);
     std::string m_label;
 };
 

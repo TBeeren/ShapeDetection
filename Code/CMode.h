@@ -16,10 +16,10 @@
 #include <iostream>
 
 #include "ESelections.h" 
+#include "CColour.h"
 
 #include "opencv2/imgcodecs.hpp"
 
-//Forward declarations
 class CFeatureExtraction;
 class CFeatureDetection;
 

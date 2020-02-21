@@ -11,7 +11,6 @@
  */
 #include "ESelections.h"
 
-#include "stdint.h"
 #include "opencv2/opencv.hpp"
 #include <vector>
 #include <memory>
@@ -20,8 +19,8 @@ class CShape;
 class CFeatureDetection
 {
 public:
-    CFeatureDetection();
-    virtual ~CFeatureDetection();
+    CFeatureDetection() = default;
+    virtual ~CFeatureDetection() = default;
 
     /**
      * @brief Set the Shape object the set shape will be used as a strategy to process incoming contours.

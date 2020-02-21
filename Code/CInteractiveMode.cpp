@@ -14,20 +14,17 @@
 #include "CViewWindow.h"
 #include "CFeatureExtraction.h"
 #include "CFeatureDetection.h"
-#include "CColour.h"
 
 #include <iostream>
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 
-CInteractiveMode::CInteractiveMode()
+namespace
 {
-
-}
-
-CInteractiveMode::~CInteractiveMode()
-{
+    constexpr const uint16_t FONTFACE = cv::FONT_HERSHEY_SIMPLEX;
+    constexpr const double FONTSCALE = 0.4;
+    constexpr const uint16_t FONTTHICKNESS = 1;
 
 }
 
@@ -64,7 +61,7 @@ void CInteractiveMode::Execute()
     cv::Mat source;
     std::vector<std::vector<cv::Point>> extractedCorners, filteredContours;
 
-    for(;;)
+    do
     {
         webcamWindow.UpdateSource();
         source = webcamWindow.GetSource();
@@ -75,6 +72,7 @@ void CInteractiveMode::Execute()
         {
             DrawShape(source, shape);
             SetLabel(source, configuredShapes.at(m_selectedShape), featureDetection->FindCenter(shape));
+
             std::cout<<"###################################################" << std::endl;
             std::cout<<"Shape: " << configuredShapes.at(m_selectedShape) << std::endl;
             std::cout<< "Colour: " << configuredColours.at(m_selectedColour) << std::endl;
@@ -92,7 +90,7 @@ void CInteractiveMode::Execute()
         {
             break; // stop capturing by pressing ESC 
         }
-    }
+    }while(true);
 }
 
 void CInteractiveMode::DrawShape(cv::Mat& rSource, std::vector<cv::Point>& rPoints)
@@ -110,12 +108,8 @@ void CInteractiveMode::DrawShape(cv::Mat& rSource, std::vector<cv::Point>& rPoin
 
 void CInteractiveMode::SetLabel(cv::Mat& rSource, const std::string& rLabel , const cv::Point& rCentre)
 {
-    int fontface = cv::FONT_HERSHEY_SIMPLEX;
-    double scale = 0.4;
-    int thickness = 1;
     int baseline = 0;
- 
-    cv::Size text = cv::getTextSize(rLabel, fontface, scale, thickness, &baseline);
+    cv::Size text = cv::getTextSize(rLabel, FONTFACE, FONTSCALE, FONTTHICKNESS, &baseline);
     cv::Point offsetCentre(rCentre.x - (text.width/2), rCentre.y);
-    cv::putText(rSource, rLabel, offsetCentre, fontface, scale, CV_RGB(0,0,0), thickness, 8);
+    cv::putText(rSource, rLabel, offsetCentre, FONTFACE, FONTSCALE, CV_RGB(0,0,0), FONTTHICKNESS, 8);
 }

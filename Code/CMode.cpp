@@ -1,4 +1,6 @@
 #include "CMode.h" 
+#include "CFeatureExtraction.h"
+#include "CFeatureDetection.h"
 
 CMode::CMode()
 : m_selectedColour(END_OF_COLOURS)

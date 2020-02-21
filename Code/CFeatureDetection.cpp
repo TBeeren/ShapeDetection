@@ -11,19 +11,12 @@
  */
 
 #include "CFeatureDetection.h"
+
 #include <iostream>
 #include "Shapes/CTriangle.h"
 #include "Shapes/CSquare.h"
 #include "Shapes/CCircle.h"
 #include "Shapes/CHalfCircle.h"
-
-CFeatureDetection::CFeatureDetection()
-{
-}
-
-CFeatureDetection::~CFeatureDetection()
-{
-}
 
 void CFeatureDetection::SetShape(eShapes shape)
 {
@@ -51,7 +44,7 @@ void CFeatureDetection::SetShape(eShapes shape)
         }
         default:
         {
-            std::cout<< "CFeatureDetection was passed an invalid shape" <<std::endl;
+            std::cout<< "Invalid Shape in CFeatureDetection::SetShape" <<std::endl;
             break;
         }
     }

@@ -17,7 +17,7 @@ namespace
 
     constexpr const int16_t MIN_SHAPE_SIZE = 200;
 
-    constexpr const double EDGE_APPROX_FACTOR = 0.02; //was 0.09
+    constexpr const double EDGE_APPROX_FACTOR = 0.02;
 }
 
 CFeatureExtraction::CFeatureExtraction()

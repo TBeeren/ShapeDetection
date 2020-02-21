@@ -22,7 +22,7 @@ bool CCalibration::InitColours(bool userCalibration)
     {
         cv::Mat source, hsv, mask;
         cv::VideoCapture cap;
-        if (!cap.open(2))
+        if (!cap.open(0))
         {
             return false;
         }

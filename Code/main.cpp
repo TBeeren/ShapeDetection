@@ -11,7 +11,6 @@
 
 #include "CCommandMode.h"
 #include "CInteractiveMode.h"
-#include <string>
 #include <vector>
 
 //Define an message with the triggered assert.
