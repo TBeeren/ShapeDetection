@@ -17,9 +17,9 @@
 #include <fstream>
 #include <memory>
 
-CParser::CParser(eShapes rSelectedShape, eColours rSelectedColour, const std::shared_ptr<CCommandMode>& spCommandMode)
-: m_rSelectedShape(rSelectedShape)
-, m_rSelectedColour(rSelectedColour)
+CParser::CParser(eShapes selectedShape, eColours selectedColour, const std::shared_ptr<CCommandMode>& spCommandMode)
+: m_rSelectedShape(selectedShape)
+, m_rSelectedColour(selectedColour)
 , m_wpCommandMode(spCommandMode)
 {
 }

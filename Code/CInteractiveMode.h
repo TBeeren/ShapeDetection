@@ -59,7 +59,7 @@ private:
      */
     void DrawShape(cv::Mat& rSource, std::vector<cv::Point>& rPoints);
 
-    void SetLabel(cv::Mat& rSource, const std::string& rLabel , const cv::Point& rCentre);
+    static void SetLabel(cv::Mat& rSource, const std::string& rLabel , const cv::Point& rCentre);
 
     std::shared_ptr<CViewWindow> m_spViewWindow;
 };

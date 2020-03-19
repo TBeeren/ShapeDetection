@@ -20,7 +20,7 @@ public:
     CCircle();
     virtual ~CCircle() = default;
     
-    bool Process(std::vector<cv::Point> contour);
+    bool Process(std::vector<cv::Point> contour) override;
 private:
     /* data */
 };

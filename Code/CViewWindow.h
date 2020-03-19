@@ -49,7 +49,7 @@ public:
     virtual ~CViewWindow();
 
     void UpdateSource(bool updateWindow = true);
-    cv::Mat GetSource();
+    cv::Mat GetSource() const;
 
 private:
     std::unique_ptr<CTrackBar<eShapes>> m_spColourTrackBar;

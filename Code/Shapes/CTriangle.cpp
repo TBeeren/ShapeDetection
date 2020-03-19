@@ -16,7 +16,7 @@ CTriangle::CTriangle()
 {
 }
 
-bool CTriangle::Process(std::vector<cv::Point> corners)
+bool CTriangle::Process(std::vector<cv::Point> contour)
 {
-    return(corners.size() == 3  && cv::isContourConvex(corners));
+    return(contour.size() == 3  && cv::isContourConvex(contour));
 }

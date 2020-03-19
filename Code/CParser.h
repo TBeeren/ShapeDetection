@@ -22,7 +22,7 @@ class CCommandMode;
 class CParser
 {
 public:
-    CParser(eShapes rSelectedShape, eColours rSelectedColour, const std::shared_ptr<CCommandMode>& pCommandMode);
+    CParser(eShapes selectedShape, eColours selectedColour, const std::shared_ptr<CCommandMode>& spCommandMode);
     virtual ~CParser() = default;
 
     /**

@@ -35,7 +35,7 @@ void CViewWindow::UpdateSource(bool updateWindow)
     }
 }
 
-cv::Mat CViewWindow::GetSource()
+cv::Mat CViewWindow::GetSource() const
 {
     return m_src;
 }

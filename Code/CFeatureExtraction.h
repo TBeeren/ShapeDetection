@@ -44,7 +44,7 @@ public:
      * @return std::vector<std::vector<cv::Point>> vector of points in a vector the inner vector contains all the points for a single detected "Shape". The outer
      * vector contains the different shapes.
      */
-    std::vector<std::vector<cv::Point>> GetCornerPoints(const cv::Mat& source, eColours colour);
+    static std::vector<std::vector<cv::Point>> GetCornerPoints(const cv::Mat& source, eColours colour);
 
     /**
      * @brief Extracts the colours from the input Matrix
@@ -53,7 +53,7 @@ public:
      * @param colour the colour to extract from the input
      * @return cv::Mat This function returns a Matrix in which the colours from the image that fit between the thresholds get turned to white and all others are black 
      */
-    cv::Mat ExtractColours(const cv::Mat &input, eColours colour);
+    static cv::Mat ExtractColours(const cv::Mat &rInput, eColours colour);
 
     /**
      * @brief Uses the Canny edge detection algorithm to detect all edges from the image NOTE: use after ExtractColours function for best results
@@ -61,7 +61,7 @@ public:
      * @param input the input matrix from which to extract the edges
      * @return cv::Mat a Matrix which shows only edges as detected by the Canny algorithm
      */
-    cv::Mat ExtractEdges(const cv::Mat &input);
+    static cv::Mat ExtractEdges(const cv::Mat &input);
 
     /**
      * @brief Turns detected into contours
@@ -69,7 +69,7 @@ public:
      * @param input the input matrix out of which the edges will be turned into contours
      * @return std::vector<std::vector<cv::Point>> This function returns a vector which contains another vector of points for each detected shape above a certain size
      */
-    std::vector<std::vector<cv::Point>> ExtractContours(const cv::Mat &input);
+    static std::vector<std::vector<cv::Point>> ExtractContours(const cv::Mat &input);
 
 private:
     std::shared_ptr<CColour> m_spLookupColour;

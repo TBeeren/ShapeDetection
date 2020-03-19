@@ -43,7 +43,7 @@ public:
      * @param rContour a contour from which the geometric centre will be calculated
      * @return cv::Point the geometric centre for the given contour
      */
-    cv::Point FindCenter(const std::vector<cv::Point>& rContour);
+    static cv::Point FindCenter(const std::vector<cv::Point>& rContour);
 
     /**
      * @brief Calculates the surface area for the given contour
@@ -51,7 +51,7 @@ public:
      * @param rContour a contour from which the surface area will be calculated
      * @return uint64_t the surface area for the given contour
      */
-    uint64_t CalcSurfaceArea(const std::vector<cv::Point>& rContour);
+    static uint64_t CalcSurfaceArea(const std::vector<cv::Point>& rContour);
  
 private:
     std::shared_ptr<CShape> m_spShape;

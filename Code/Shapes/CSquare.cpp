@@ -16,7 +16,7 @@ CSquare::CSquare()
 {
 }
 
-bool CSquare::Process(std::vector<cv::Point> corners)
+bool CSquare::Process(std::vector<cv::Point> contour)
 {
-    return(corners.size() == 4 && cv::isContourConvex(corners));
+    return(contour.size() == 4 && cv::isContourConvex(contour));
 }

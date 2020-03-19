@@ -51,7 +51,7 @@ protected:
      * @return true, if the colour is specified in the configuration.
      * @return false, if the colour isn't specified in the program. 
      */
-    bool IsConfiguredAsColour(const std::string& colourArgument);
+    bool IsConfiguredAsColour(const std::string& cmdArgument);
 
     /**
      * @brief Checks if the given shape is configured for the program.
@@ -60,7 +60,7 @@ protected:
      * @return true, if the shape is specified in the configuration.
      * @return false, if the shape isn't specified in the program. 
      */
-    bool IsConfiguredAsShape(const std::string& shapeArgument);
+    bool IsConfiguredAsShape(const std::string& cmdArgument);
 
     /**
      * @brief Converts a string to an enum.
@@ -68,7 +68,7 @@ protected:
      * @param colourString, the colour input string of the user.
      * @return eColours, returns the enum. 
      */
-    eColours StringToColour(const std::string& colourString);
+    static eColours StringToColour(const std::string& colourString);
 
     /**
      * @brief Converts a string to an enum.
@@ -76,7 +76,7 @@ protected:
      * @param shapeString, the shape input string of the user.
      * @return eShapes, returns the enum.
      */
-    eShapes StringToShape(const std::string& shapeString);
+    static eShapes StringToShape(const std::string& shapeString);
     
     /**
      * @brief 
@@ -84,7 +84,7 @@ protected:
      * @param eColour 
      * @return const std::string& 
      */
-    const std::string ColourToString(eColours eColour);
+    static const std::string ColourToString(eColours eColour);
 
     /**
      * @brief 
@@ -92,7 +92,7 @@ protected:
      * @param eShape 
      * @return const std::string& 
      */
-    const std::string ShapeToString(eShapes eShape);
+    static const std::string ShapeToString(eShapes eShape);
 
 
     /**
